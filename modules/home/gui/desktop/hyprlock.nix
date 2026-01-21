@@ -8,7 +8,6 @@ in {
     settings = {
       general = {
         hide_cursor = true;
-        disable_loading_bar = true;
       };
 
       background = {
