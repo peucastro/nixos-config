@@ -5,6 +5,6 @@
     ./state-configuration.nix
     ./home-configuration.nix
     ../../secrets
-    ../../modules/core
+    ../../profiles/laptop.nix
   ];
 }

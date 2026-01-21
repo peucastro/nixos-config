@@ -7,5 +7,6 @@
     ./rebuild.nix
     ./security.nix
     ./users.nix
+    ./home-manager.nix
   ];
 }

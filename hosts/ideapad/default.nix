@@ -4,7 +4,7 @@
     ./disk-configuration.nix
     ./state-configuration.nix
     ./home-configuration.nix
-    ../../modules/core
+    ../../profiles/laptop.nix
   ];
 
   custom.gpuChoice = "amd";
