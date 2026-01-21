@@ -1,5 +1,5 @@
 {
   imports = [
-    ./graphics
+    ./ssh.nix
   ];
 }

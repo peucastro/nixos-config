@@ -1,10 +1,11 @@
 {
   imports = [
     ./base
+    ./desktop
     ./gaming
     ./hardware
+    ./server
     ./services
-    ./system
     ./virtualisation
   ];
 }
