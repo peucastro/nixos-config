@@ -51,13 +51,14 @@
 
   users.extraGroups.networkmanager.members = [user.login];
 
-  services.strongswan.enable = true;
-  environment.etc."strongswan.conf".text = "";
-  services.tailscale.enable = true;
+  services = {
+    strongswan.enable = true;
+    tailscale.enable = true;
+    power-profiles-daemon.enable = true;
+    upower.enable = true;
+  };
 
-  # Power management
-  services.power-profiles-daemon.enable = true;
-  services.upower.enable = true;
+  environment.etc."strongswan.conf".text = "";
 
   powerManagement = {
     enable = true;
