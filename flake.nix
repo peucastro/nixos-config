@@ -132,6 +132,9 @@
           hostname = "ideapad";
           extraModules = [disko.nixosModules.disko];
         };
+        khloe = mkSystem "x86_64-linux" {
+          hostname = "khloe";
+        };
       };
     };
 }

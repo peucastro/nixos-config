@@ -8,7 +8,8 @@
     ../modules/core/desktop
     ../modules/core/gaming
     ../modules/core/hardware
-    ../modules/core/services
+    ../modules/core/services/services.nix
+    ../modules/core/services/snapper.nix
     ../modules/core/virtualisation
   ];
 

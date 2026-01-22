@@ -2,8 +2,8 @@
   imports = [
     ./hardware-configuration.nix
     ../../secrets
-    ../../modules/core
-    ../../modules/services
+    ../../profiles/server.nix
+    ../../modules/core/services/homeserver
   ];
 
   networking.hostName = "khloe";

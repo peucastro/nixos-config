@@ -6,7 +6,7 @@ This directory contains modular NixOS and Home Manager configuration files, orga
 
 ### Core (`core/`)
 
-NixOS system-level configuration modules:
+NixOS system-level configuration modules:w
 
 - `base/` - Essential system settings such as user management, security, networking, and package manager configuration
 - `hardware/` - Hardware-specific configuration, including audio, Bluetooth, and keyboard layout
