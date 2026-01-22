@@ -1,0 +1,51 @@
+name: Flake Evaluation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  check-flake:
+    name: Evaluate flake
+    runs-on: ubuntu-latest
+    if: github.actor != 'dependabot[bot]'
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v6
+
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Setup Nix and Cachix
+        uses: ./.github/actions/setup-nix
+        with:
+          token: ${{ secrets.CACHIX_AUTH_TOKEN }}
+
+      - name: Add Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v13
+
+      - name: Check Nixpkgs Inputs
+        uses: DeterminateSystems/flake-checker-action@v12
+
+      - name: Check the flake
+        run: nix flake check --show-trace
+
+  check-lock:
+    name: Check Lock
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Nix and Cachix
+        uses: ./.github/actions/setup-nix
+        with:
+          token: ${{ secrets.CACHIX_AUTH_TOKEN }}
+
+      - name: Check flake.lock
+        run: nix run github:tgirlcloud/locker

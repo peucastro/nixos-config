@@ -1,0 +1,42 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  check-formatting:
+    name: Check formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Alejandra CLI
+        uses: 0xc000022070/setup-alejandra@v4.0.0
+
+      - name: Check formatting
+        run: alejandra --check **/*.nix
+
+  check-lint:
+    name: Nix Lint & Statix
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Nix and Cachix
+        uses: ./.github/actions/setup-nix
+        with:
+          token: ${{ secrets.CACHIX_AUTH_TOKEN }}
+
+      - name: Install Statix
+        run: nix profile install github:nerdypepper/statix
+
+      - name: Run Statix Lint
+        run: statix check .
+
+      - name: Run Nixpkgs Lint
+        run: nix run github:nix-community/nixpkgs-lint .
