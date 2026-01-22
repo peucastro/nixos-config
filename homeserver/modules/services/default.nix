@@ -1,0 +1,18 @@
+{
+  imports = [
+    ./arr
+    ./adguardhome.nix
+    ./backups.nix
+    ./caddy.nix
+    ./deluge.nix
+    ./filebrowser.nix
+    ./glances.nix
+    ./homepage.nix
+    ./immich.nix
+    ./jellyfin.nix
+    ./jellyseerr.nix
+    ./qbittorrent.nix
+    ./tailscale.nix
+    ./uptime-kuma.nix
+  ];
+}
