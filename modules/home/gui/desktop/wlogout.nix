@@ -78,57 +78,57 @@ in {
       }
 
       #lock {
-        background-image: image(url("${homeDir}/dotfiles/assets/icons/power/lock.png"));
+        background-image: image(url("${homeDir}/nixos-config/assets/icons/power/lock.png"));
       }
 
       #lock:hover,
       #lock:focus {
-        background-image: image(url("${homeDir}/dotfiles/assets/icons/power/lock_hover.png"));
+        background-image: image(url("${homeDir}/nixos-config/assets/icons/power/lock_hover.png"));
       }
 
       #logout {
-        background-image: image(url("${homeDir}/dotfiles/assets/icons/power/logout.png"));
+        background-image: image(url("${homeDir}/nixos-config/assets/icons/power/logout.png"));
       }
 
       #logout:hover,
       #logout:focus {
-        background-image: image(url("${homeDir}/dotfiles/assets/icons/power/logout_hover.png"));
+        background-image: image(url("${homeDir}/nixos-config/assets/icons/power/logout_hover.png"));
       }
 
       #suspend {
-        background-image: image(url("${homeDir}/dotfiles/assets/icons/power/suspend.png"));
+        background-image: image(url("${homeDir}/nixos-config/assets/icons/power/suspend.png"));
       }
 
       #suspend:hover,
       #suspend:focus {
-        background-image: image(url("${homeDir}/dotfiles/assets/icons/power/suspend_hover.png"));
+        background-image: image(url("${homeDir}/nixos-config/assets/icons/power/suspend_hover.png"));
       }
 
       #hibernate {
-        background-image: image(url("${homeDir}/dotfiles/assets/icons/power/hibernate.png"));
+        background-image: image(url("${homeDir}/nixos-config/assets/icons/power/hibernate.png"));
       }
 
       #hibernate:hover,
       #hibernate:focus {
-        background-image: image(url("${homeDir}/dotfiles/assets/icons/power/hibernate_hover.png"));
+        background-image: image(url("${homeDir}/nixos-config/assets/icons/power/hibernate_hover.png"));
       }
 
       #shutdown {
-        background-image: image(url("${homeDir}/dotfiles/assets/icons/power/shutdown.png"));
+        background-image: image(url("${homeDir}/nixos-config/assets/icons/power/shutdown.png"));
       }
 
       #shutdown:hover,
       #shutdown:focus {
-        background-image: image(url("${homeDir}/dotfiles/assets/icons/power/shutdown_hover.png"));
+        background-image: image(url("${homeDir}/nixos-config/assets/icons/power/shutdown_hover.png"));
       }
 
       #reboot {
-        background-image: image(url("${homeDir}/dotfiles/assets/icons/power/reboot.png"));
+        background-image: image(url("${homeDir}/nixos-config/assets/icons/power/reboot.png"));
       }
 
       #reboot:hover,
       #reboot:focus {
-        background-image: image(url("${homeDir}/dotfiles/assets/icons/power/reboot_hover.png"));
+        background-image: image(url("${homeDir}/nixos-config/assets/icons/power/reboot_hover.png"));
       }
     '';
   };

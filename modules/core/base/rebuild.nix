@@ -5,7 +5,7 @@
 }: let
   name = "system-rebuild";
   version = "1.0.0";
-  pname = "peucastro-dotfiles-${name}";
+  pname = "peucastro-nixos-config-${name}";
 
   system-rebuild = pkgs.writeShellApplication {
     inherit name;
@@ -96,7 +96,7 @@
       }
 
       parse_options "$@"
-      pushd ~/dotfiles > /dev/null
+      pushd ~/nixos-config > /dev/null
       format_files
       if ! should_rebuild; then
         popd > /dev/null

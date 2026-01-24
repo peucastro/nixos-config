@@ -15,5 +15,5 @@ runs:
     - name: Setup Cachix
       uses: cachix/cachix-action@v14
       with:
-        name: peucastro-dotfiles
+        name: peucastro-nixos-config
         authToken: ${{ inputs.token }}
