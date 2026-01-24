@@ -6,6 +6,9 @@
     ../../modules/core/services/homeserver
   ];
 
+  virtualisation.virtualbox.guest.enable = true;
+  users.users.homeserver.extraGroups = ["vboxsf"];
+
   networking.hostName = "khloe";
   system.stateVersion = "25.11";
 

@@ -72,6 +72,7 @@
     # Filesystem
     btrfs-progs
     snapper
+    veracrypt
 
     # Utilities
     unzip
