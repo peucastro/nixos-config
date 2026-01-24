@@ -25,6 +25,17 @@ My NixOS setup running on a couple of laptops and a home server. Everything is m
 └── secrets/        # Encrypted secrets management
 ```
 
+## Installation
+
+1. Boot the NixOS installer ISO
+2. Set up network connection (WiFi or ethernet)
+3. Mount VeraCrypt USB and copy SSH keys to `/etc/ssh/`
+4. Clone this repo: `git clone https://github.com/peucastro/nixos-config`
+5. Update disk device in `hosts/<hostname>/disk-configuration.nix`
+6. Run disko: `sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount hosts/<hostname>/disk-configuration.nix`
+7. Install: `sudo nixos-install --flake .#<hostname>`
+8. Reboot
+
 ## Software
 
 ### Core System
@@ -36,25 +47,31 @@ My NixOS setup running on a couple of laptops and a home server. Everything is m
 - **Screen Locker:** [`hyprlock`](https://wiki.hypr.land/Hypr-Ecosystem/hyprlock/)
 - **Logout Menu:** [`wlogout`](https://github.com/ArtsyMacaw/wlogout/)
 - **Notification Daemon:** [`dunst`](https://dunst-project.org/)
-- **Display Manager**: [`greetd`](https://sr.ht/~kennylevinsen/greetd/) + [`tuigreet`](https://github.com/apognu/tuigreet/)
-- **Monitors Manager**: [`kanshi`](https://gitlab.freedesktop.org/emersion/kanshi/)
+- **Display Manager:** [`greetd`](https://sr.ht/~kennylevinsen/greetd/) + [`tuigreet`](https://github.com/apognu/tuigreet/)
+- **Monitor Manager:** [`kanshi`](https://gitlab.freedesktop.org/emersion/kanshi/)
 - **Clipboard Manager:** [`wl-clipboard`](https://github.com/bugaevc/wl-clipboard/) + [`cliphist`](https://github.com/sentriz/cliphist/)
+- **Screenshot Tool:** [`grim`](https://sr.ht/~emersion/grim/) + [`slurp`](https://github.com/emersion/slurp) + [`swappy`](https://github.com/jtheoof/swappy/)
+- **Night Light:** [`wlsunset`](https://sr.ht/~kennylevinsen/wlsunset/)
 
 ### Terminal & Shell
 
-- **Terminal Emulator:** [`Alacritty`](https://alacritty.org/index.html/)
+- **Terminal Emulator:** [`Alacritty`](https://alacritty.org/), [`Ghostty`](https://ghostty.org/)
 - **Shell:** [`Zsh`](https://www.zsh.org/)
   - **Plugin Manager:** [`oh-my-zsh`](https://ohmyz.sh/)
   - **Plugins:** [`zsh-autosuggestions`](https://github.com/zsh-users/zsh-autosuggestions/), [`zsh-syntax-highlighting`](https://github.com/zsh-users/zsh-syntax-highlighting/)
-- **Text Editors:** [`Neovim`](https://neovim.io/)
+- **Text Editor:** [`Neovim`](https://neovim.io/)
 - **Terminal Multiplexer:** [`tmux`](https://github.com/tmux/tmux/)
-- **System Information:** [`fastfetch`](https://github.com/fastfetch-cli/fastfetch/)
+- **System Monitor:** [`btop`](https://github.com/aristocratos/btop/), [`fastfetch`](https://github.com/fastfetch-cli/fastfetch/)
+- **CLI Tools:** [`bat`](https://github.com/sharkdp/bat/), [`eza`](https://github.com/eza-community/eza/), [`fd`](https://github.com/sharkdp/fd/), [`ripgrep`](https://github.com/BurntSushi/ripgrep/), [`fzf`](https://github.com/junegunn/fzf/)
 
 ### Applications
 
 - **Application Launcher:** [`Rofi`](https://davatorium.github.io/rofi/)
-- **Code Editor:** [`VS Code`](https://code.visualstudio.com/), [`Zed`](https://zed.dev/)
-- **Web Browser:** [`Zen`](https://zen-browser.app/), [`Chromium`](https://www.chromium.org/chromium-projects/)
+- **Code Editors:** [`VS Code`](https://code.visualstudio.com/), [`Zed`](https://zed.dev/)
+- **Web Browsers:** [`Zen`](https://zen-browser.app/), [`Firefox`](https://www.mozilla.org/firefox/), [`ungoogled-chromium`](https://github.com/ungoogled-software/ungoogled-chromium/)
+- **Communication:** [`Discord`](https://discord.com/), [`Slack`](https://slack.com/), [`Telegram`](https://telegram.org/)
+- **Office & Productivity:** [`LibreOffice`](https://www.libreoffice.org/), [`Obsidian`](https://obsidian.md/), [`Calibre`](https://calibre-ebook.com/)
+- **Utilities:** [`Bitwarden`](https://bitwarden.com/), [`qBittorrent`](https://www.qbittorrent.org/), [`LocalSend`](https://localsend.org/)
 
 ## Home Server
 
