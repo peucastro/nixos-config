@@ -28,4 +28,6 @@
       })
       config.homeserver.caddy.vhosts);
   };
+
+  homeserver.services.backups.paths = [config.services.caddy.dataDir];
 }

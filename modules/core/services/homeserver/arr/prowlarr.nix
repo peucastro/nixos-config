@@ -49,6 +49,8 @@ in {
       };
     };
 
+    homeserver.services.backups.paths = [config.services.prowlarr.dataDir];
+
     homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
   };
 }

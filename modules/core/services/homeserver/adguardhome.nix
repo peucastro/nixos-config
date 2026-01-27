@@ -249,6 +249,8 @@ in {
       };
     };
 
+    homeserver.services.backups.paths = ["/var/lib/AdGuardHome"];
+
     homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
   };
 }

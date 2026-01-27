@@ -74,6 +74,8 @@ in {
       };
     };
 
+    homeserver.services.backups.paths = [config.services.deluge.dataDir];
+
     homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
   };
 }

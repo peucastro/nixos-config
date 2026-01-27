@@ -61,6 +61,8 @@ in {
       };
     };
 
+    homeserver.services.backups.paths = [config.services.razarr.dataDir];
+
     homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
   };
 }
