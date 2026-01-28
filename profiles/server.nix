@@ -41,6 +41,8 @@
 
   services.xserver.enable = false;
 
+  powerManagement.powertop.enable = true;
+
   environment.systemPackages = [
     # Networking tools
     pkgs.curl
