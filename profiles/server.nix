@@ -18,8 +18,6 @@
   };
 
   time.timeZone = config.homeserver.timeZone;
-
-  i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -33,7 +31,7 @@
   };
 
   networking = {
-    networkmanager.enable = true;
+    useDHCP = false;
     nameservers = ["1.1.1.1" "1.0.0.1" "8.8.8.8" "8.8.4.4"];
     firewall = {
       enable = true;

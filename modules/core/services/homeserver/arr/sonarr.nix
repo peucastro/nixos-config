@@ -61,7 +61,7 @@ in {
       };
     };
 
-    homeserver.services.backups.paths = [config.services.sozarr.dataDir];
+    homeserver.services.backups.paths = [config.services.sonarr.dataDir];
 
     homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
   };
