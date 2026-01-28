@@ -1,6 +1,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./disk-configuration.nix
     ./state-configuration.nix
     ../../secrets
     ../../profiles/server.nix
@@ -9,8 +10,7 @@
 
   networking = {
     hostName = "kim";
-    # FIXME
-    interfaces.___.ipv4.addresses = [
+    interfaces.enp2s0.ipv4.addresses = [
       {
         address = "192.168.1.100";
         prefixLength = 24;

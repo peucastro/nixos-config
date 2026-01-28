@@ -11,10 +11,9 @@
   ];
 
   boot.loader = {
-    grub = {
-      enable = true;
-      device = "/dev/sda";
-    };
+    systemd-boot.enable = true;
+    grub.enable = false;
+    efi.canTouchEfiVariables = true;
   };
 
   time.timeZone = config.homeserver.timeZone;

@@ -135,6 +135,10 @@
         khloe = mkSystem "x86_64-linux" {
           hostname = "khloe";
         };
+        kim = mkSystem "x86_64-linux" {
+          hostname = "kim";
+          extraModules = [disko.nixosModules.disko];
+        };
       };
     };
 }
