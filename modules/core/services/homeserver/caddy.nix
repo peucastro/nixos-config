@@ -36,6 +36,11 @@ in {
         config.homeserver.caddy.vhosts);
     };
 
+    networking.firewall = {
+      allowedTCPPorts = [80 443];
+      allowedUDPPorts = [443];
+    };
+
     homeserver.services.backups.paths = [config.services.caddy.dataDir];
   };
 }

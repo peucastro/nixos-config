@@ -250,6 +250,11 @@ in {
       };
     };
 
+    networking.firewall = {
+      allowedTCPPorts = [53 3000];
+      allowedUDPPorts = [53];
+    };
+
     homeserver.services.backups.paths = ["/var/lib/AdGuardHome"];
 
     homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
