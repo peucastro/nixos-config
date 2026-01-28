@@ -18,12 +18,6 @@
       owner = "caddy";
       group = "caddy";
     };
-    deluge-auth = {
-      file = "${secrets}/deluge-auth.age";
-      mode = "0400";
-      owner = config.services.deluge.user;
-      group = config.services.deluge.group;
-    };
     radarr-api-key = {
       file = "${secrets}/radarr-api-key.age";
       mode = "0400";

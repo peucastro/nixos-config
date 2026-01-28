@@ -34,7 +34,7 @@
       radarr.enable = true;
       sonarr.enable = true;
       prowlarr.enable = true;
-      deluge.enable = true;
+      qbittorrent.enable = true;
       jellyseerr.enable = true;
       glances.enable = true;
       uptime-kuma.enable = true;

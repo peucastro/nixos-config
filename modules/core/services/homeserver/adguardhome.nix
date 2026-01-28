@@ -205,6 +205,7 @@ in {
             map (v: {
               domain = v.hostname;
               answer = lanIp;
+              enabled = true;
             })
             config.homeserver.caddy.vhosts;
           safe_fs_patterns = [];
