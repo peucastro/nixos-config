@@ -7,4 +7,6 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE9u5RuYphI3QBpNs1eVa1/X1geEllXGW5IcSb+Gf7js falecompedroac@gmail.com"
     ];
   };
+
+  nix.settings.trusted-users = ["root" "homeserver"];
 }

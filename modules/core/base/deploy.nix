@@ -3,14 +3,14 @@
   user,
   ...
 }: let
-  name = "system-rebuild";
+  name = "deploy";
   version = "1.0.0";
   pname = "peucastro-nixos-config-${name}";
 
-  system-rebuild = pkgs.writeShellApplication {
+  deploy = pkgs.writeShellApplication {
     inherit name;
     meta = {
-      description = "Rebuild NixOS system with Git synchronization";
+      description = "Deplout NixOS system with Git synchronization";
       license = pkgs.lib.licenses.mit;
     };
 
@@ -33,16 +33,26 @@
         opts="$(getopt -n ${name} -o h -l help -o f -l force -- "$@")"
         eval set -- "$opts"
         REBUILD_FORCE=false
+        FLAKE_HOST=""
+        SSH_TARGET=""
         while true; do
           case "$1" in
             -h|--help)
-              echo "Usage: ${name} [OPTIONS]"
+              echo "Usage: ${name} [OPTIONS] [FLAKE_HOST] [SSH_HOST]"
               echo
-              echo "Rebuild NixOS system with Git synchronization."
+              echo "Deploying NixOS system with Git synchronization."
               echo
               echo "Options:"
-              echo "  -h, --help   Show this help message and exit."
-              echo "  -f, --force  Force rebuild, even if there are no changes to commit."
+              echo "  -h, --help     Show this help message and exit."
+              echo "  -f, --force    Force reploy, even if there are no changes to commit."
+              echo
+              echo "Arguments:"
+              echo "  FLAKE_HOST     Flake hostname (e.g., kim)"
+              echo "  SSH_HOST       SSH target (e.g., homeserver@192.168.1.100)"
+              echo
+              echo "Examples:"
+              echo "  ${name}                                          # Local deploy"
+              echo "  ${name} kim homeserver@192.168.1.100             # Remote deploy"
               echo
               exit 0
               ;;
@@ -52,6 +62,8 @@
               ;;
             --)
               shift
+              FLAKE_HOST="''${1:-}"
+              SSH_TARGET="''${2:-}"
               break
               ;;
             *)
@@ -92,23 +104,35 @@
       }
 
       notify_failure() {
-        notify-send -e "NixOS rebuild failed!" --icon=dialog-error
+        notify-send -e "NixOS deploy failed!" --icon=dialog-error
       }
 
       parse_options "$@"
       pushd ~/nixos-config > /dev/null
+
+      git stash
+      git pull --rebase
+      git stash pop || true
+
       format_files
       if ! should_rebuild; then
         popd > /dev/null
         exit 0
       fi
-      echo "Rebuilding NixOS system..."
-      if sudo nixos-rebuild switch --flake .#; then
-        echo "NixOS rebuild successful, committing changes to git..."
+      echo "Deploying NixOS system..."
+
+      if [ -z "$FLAKE_HOST" ]; then
+        REBUILD_CMD="sudo nixos-rebuild switch --flake .#"
+      else
+        REBUILD_CMD="nixos-rebuild switch --flake .#$FLAKE_HOST --target-host $SSH_TARGET --use-remote-sudo --ask-sudo-password"
+      fi
+
+      if $REBUILD_CMD; then
+        echo "NixOS deploy successful, committing changes to git..."
         commit_and_push
         notify_success
       else
-        echo "NixOS rebuild failed, not committing changes."
+        echo "NixOS deploy failed, not committing changes."
         notify_failure
         popd > /dev/null
         exit 1
@@ -117,5 +141,5 @@
     '';
   };
 in {
-  users.users.${user.login}.packages = [system-rebuild];
+  users.users.${user.login}.packages = [deploy];
 }
