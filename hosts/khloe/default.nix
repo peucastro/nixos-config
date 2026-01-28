@@ -24,6 +24,7 @@
     timeZone = "Europe/Lisbon";
     lanIp = "10.0.2.15";
     services = {
+      caddy.enable = true;
       tailscale.enable = true;
       adguardhome.enable = true;
       homepage.enable = true;
