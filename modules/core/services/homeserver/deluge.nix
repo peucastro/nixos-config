@@ -50,6 +50,7 @@ in {
         inherit (cfg) port;
       };
       config = {
+        allow_remote = true;
         download_location = "/data/downloads/incomplete";
         move_completed = true;
         move_completed_path = "/data/downloads";
