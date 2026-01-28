@@ -29,4 +29,25 @@
       };
     };
   };
+
+  fileSystems = {
+    "/data" = {
+      device = "/dev/disk/by-uuid/99a58cf6-98ef-4107-b981-3b78bb35cbb6";
+      fsType = "ext4";
+      options = ["defaults" "nofail"];
+    };
+
+    "/data/personal" = {
+      device = "/dev/disk/by-uuid/eff1f60a-bf9f-4fca-84c2-1362c8e43706";
+      fsType = "ext4";
+      options = ["defaults" "nofail"];
+      depends = ["/data"];
+    };
+
+    "/mnt/backups" = {
+      device = "/dev/disk/by-uuid/11ef621f-4a20-4dfc-96e8-a6927941d73a";
+      fsType = "ext4";
+      options = ["defaults" "nofail"];
+    };
+  };
 }
