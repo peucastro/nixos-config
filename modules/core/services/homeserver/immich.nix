@@ -45,6 +45,17 @@ in {
       enable = true;
       inherit (cfg) port;
       host = "127.0.0.1";
+      mediaLocation = "/data/personal/immich";
+    };
+
+    systemd.tmpfiles.settings = {
+      "10-immich" = {
+        "/data/personal/immich".d = {
+          user = "immich";
+          group = "immich";
+          mode = "0750";
+        };
+      };
     };
 
     homeserver.services.backups.paths = [config.services.immich.mediaLocation];
