@@ -38,9 +38,9 @@
       jellyseerr.enable = true;
       linkwarden.enable = true;
       glances.enable = true;
-      netdata.enable = true;
       stirling-pdf.enable = true;
       uptime-kuma.enable = true;
+      calibre-web.enable = true;
       backups = {
         enable = true;
         repository = "/mnt/backups";

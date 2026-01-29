@@ -4,6 +4,7 @@
     ./adguardhome.nix
     ./backups.nix
     ./caddy.nix
+    ./calibre-web.nix
     ./deluge.nix
     ./filebrowser.nix
     ./glances.nix
@@ -12,7 +13,6 @@
     ./jellyfin.nix
     ./jellyseerr.nix
     ./linkwarden.nix
-    ./netdata.nix
     ./qbittorrent.nix
     ./stirling-pdf.nix
     ./tailscale.nix
