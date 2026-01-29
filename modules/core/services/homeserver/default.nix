@@ -12,6 +12,7 @@
     ./jellyfin.nix
     ./jellyseerr.nix
     ./linkwarden.nix
+    ./netdata.nix
     ./qbittorrent.nix
     ./stirling-pdf.nix
     ./tailscale.nix
