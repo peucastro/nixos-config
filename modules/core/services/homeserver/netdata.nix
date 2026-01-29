@@ -52,6 +52,12 @@ in {
         web = {
           "bind to" = "127.0.0.1";
         };
+        "plugin:freeipmi" = {
+          "update every" = "never";
+        };
+        "plugin:go.d" = {
+          "postgres" = "no";
+        };
       };
     };
 
