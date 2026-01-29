@@ -245,11 +245,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1769271479,
-        "narHash": "sha256-eQZuyPhP8JCXuqGEeKF7mpOCbvJz9RHpfyNJYiBq7+o=",
+        "lastModified": 1769645592,
+        "narHash": "sha256-Hn7Uc7F9qz869RyprN9NI/Qh6PkBDwFZTKFXfng31o8=",
         "ref": "refs/heads/master",
-        "rev": "38b5c8bff4b0bebab65c8af7a8fca355de898dfa",
-        "revCount": 16,
+        "rev": "b794cf4271ddd5ead221dc516c24be8288eabd6f",
+        "revCount": 17,
         "type": "git",
         "url": "ssh://git@github.com/peucastro/secrets.git"
       },

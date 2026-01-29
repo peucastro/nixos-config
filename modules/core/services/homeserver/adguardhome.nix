@@ -70,7 +70,7 @@ in {
           ratelimit_subnet_len_ipv6 = 56;
           ratelimit_whitelist = [];
           refuse_any = true;
-          upstream_dns = ["1.1.1.1" "8.8.8.8"];
+          upstream_dns = ["https://dns.cloudflare.com/dns-query" "https://dns.google/dns-query"];
           upstream_dns_file = "";
           bootstrap_dns = ["1.1.1.1" "8.8.8.8"];
           fallback_dns = ["9.9.9.9"];
@@ -82,8 +82,8 @@ in {
           trusted_proxies = ["127.0.0.0/8" "::1/128"];
           cache_enabled = true;
           cache_size = 4194304;
-          cache_ttl_min = 0;
-          cache_ttl_max = 0;
+          cache_ttl_min = 60;
+          cache_ttl_max = 86400;
           cache_optimistic = false;
           bogus_nxdomain = [];
           aaaa_disabled = false;
@@ -139,7 +139,7 @@ in {
         statistics = {
           dir_path = "";
           ignored = [];
-          interval = "24h";
+          interval = "2160h";
           enabled = true;
         };
         filters = [
@@ -153,7 +153,13 @@ in {
             enabled = true;
             url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_2.txt";
             name = "AdAway Default Blocklist";
-            id = 1;
+            id = 2;
+          }
+          {
+            enabled = true;
+            url = "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro.txt";
+            name = "HaGeZi's Pro Blocklist";
+            id = 3;
           }
         ];
         whitelist_filters = [];
@@ -213,7 +219,7 @@ in {
           safesearch_cache_size = 1048576;
           parental_cache_size = 1048576;
           cache_time = 30;
-          filters_update_interval = 24;
+          filters_update_interval = 12;
           blocked_response_ttl = 10;
           filtering_enabled = true;
           rewrites_enabled = true;

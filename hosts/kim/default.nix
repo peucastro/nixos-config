@@ -36,6 +36,7 @@
       prowlarr.enable = true;
       qbittorrent.enable = true;
       jellyseerr.enable = true;
+      linkwarden.enable = true;
       glances.enable = true;
       uptime-kuma.enable = true;
       backups = {

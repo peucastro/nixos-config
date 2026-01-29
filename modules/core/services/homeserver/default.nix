@@ -11,6 +11,7 @@
     ./immich.nix
     ./jellyfin.nix
     ./jellyseerr.nix
+    ./linkwarden.nix
     ./qbittorrent.nix
     ./tailscale.nix
     ./uptime-kuma.nix
