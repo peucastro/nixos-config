@@ -63,6 +63,9 @@ in {
           "postgres:local" = "no";
           "maxscale" = "no";
         };
+        "plugin:go.d:postgres:local" = {
+          "enabled" = "no";
+        };
       };
     };
 
