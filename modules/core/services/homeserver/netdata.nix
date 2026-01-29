@@ -60,6 +60,7 @@ in {
         };
         "plugin:go.d" = {
           "postgres" = "no";
+          "maxscale" = "no";
         };
       };
     };
