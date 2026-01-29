@@ -13,6 +13,7 @@
     ./jellyseerr.nix
     ./linkwarden.nix
     ./qbittorrent.nix
+    ./stirling-pdf.nix
     ./tailscale.nix
     ./uptime-kuma.nix
   ];

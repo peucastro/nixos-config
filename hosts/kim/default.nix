@@ -38,6 +38,7 @@
       jellyseerr.enable = true;
       linkwarden.enable = true;
       glances.enable = true;
+      stirling-pdf.enable = true;
       uptime-kuma.enable = true;
       backups = {
         enable = true;
