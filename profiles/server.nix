@@ -10,10 +10,17 @@
     ../modules/core/server
   ];
 
-  boot.loader = {
-    systemd-boot.enable = true;
-    grub.enable = false;
-    efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      grub.enable = false;
+      efi.canTouchEfiVariables = true;
+    };
+
+    kernel.sysctl = {
+      "net.ipv4.ip_forward" = 1;
+      "net.ipv6.conf.all.forwarding" = 1;
+    };
   };
 
   time.timeZone = config.homeserver.timeZone;
@@ -36,6 +43,7 @@
       enable = true;
       rejectPackets = true;
       allowedTCPPorts = [22];
+      checkReversePath = "loose";
     };
   };
 
