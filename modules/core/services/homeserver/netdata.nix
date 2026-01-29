@@ -55,6 +55,9 @@ in {
         "plugin:freeipmi" = {
           "update every" = "never";
         };
+        "plugins" = {
+          "freeipmi" = "no";
+        };
         "plugin:go.d" = {
           "postgres" = "no";
         };
