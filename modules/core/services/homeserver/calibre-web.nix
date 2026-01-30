@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.homeserver.services.calibre-web;
@@ -71,6 +72,8 @@ in {
         };
       };
     };
+
+    environment.systemPackages = [pkgs.calibre];
 
     homeserver.services.backups.paths = [config.services.calibre-web.dataDir];
 

@@ -1,0 +1,87 @@
+{
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.homeserver.services.monitoring.prometheus;
+  workingDir = "/var/lib/" + config.services.prometheus.stateDir;
+in {
+  options.homeserver.services.monitoring.prometheus = {
+    enable = lib.mkEnableOption "Prometheus monitoring system";
+
+    port = lib.mkOption {
+      type = lib.types.port;
+      default = 9090;
+      description = "The TCP port on which Prometheus will listen internally.";
+    };
+
+    hostname = lib.mkOption {
+      type = lib.types.str;
+      default = "prometheus.${config.homeserver.baseDomain}";
+      description = "The public DNS hostname used to access Prometheus.";
+    };
+
+    homepage = {
+      name = lib.mkOption {
+        type = lib.types.str;
+        default = "Prometheus";
+      };
+      description = lib.mkOption {
+        type = lib.types.str;
+        default = "Metrics collection and alerting";
+      };
+      icon = lib.mkOption {
+        type = lib.types.str;
+        default = "prometheus.svg";
+      };
+      category = lib.mkOption {
+        type = lib.types.str;
+        default = "Monitoring";
+      };
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    services.prometheus = {
+      enable = true;
+      port = cfg.port;
+
+      exporters.node = {
+        enable = true;
+        enabledCollectors = ["systemd" "diskstats" "netdev"];
+        port = 9100;
+      };
+
+      scrapeConfigs = [
+        {
+          job_name = "prometheus";
+          static_configs = [
+            {
+              targets = ["127.0.0.1:${toString cfg.port}"];
+            }
+          ];
+        }
+        {
+          job_name = "node";
+          static_configs = [
+            {
+              targets = ["127.0.0.1:9100"];
+            }
+          ];
+        }
+        {
+          job_name = "caddy";
+          static_configs = [
+            {
+              targets = ["127.0.0.1:2019"];
+            }
+          ];
+        }
+      ];
+    };
+
+    homeserver.services.backups.paths = [workingDir];
+
+    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+  };
+}

@@ -22,6 +22,10 @@ in {
 
       globalConfig = ''
         acme_dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+        admin 127.0.0.1:2019
+        servers {
+          metrics
+        }
       '';
 
       virtualHosts = lib.listToAttrs (map

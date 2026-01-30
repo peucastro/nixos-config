@@ -1,6 +1,7 @@
 {
   imports = [
     ./arr
+    ./monitoring
     ./adguardhome.nix
     ./backups.nix
     ./caddy.nix
