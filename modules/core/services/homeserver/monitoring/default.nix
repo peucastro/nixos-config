@@ -13,9 +13,11 @@
   options.homeserver.services.monitoring.enable = lib.mkEnableOption "Enable all monitoring services (Grafana, Prometheus, Loki, Alloy)";
 
   config = lib.mkIf config.homeserver.services.monitoring.enable {
-    homeserver.services.grafana.enable = true;
-    homeserver.services.prometheus.enable = true;
-    homeserver.services.loki.enable = true;
-    homeserver.services.alloy.enable = true;
+    homeserver.services = {
+      grafana.enable = true;
+      prometheus.enable = true;
+      loki.enable = true;
+      alloy.enable = true;
+    };
   };
 }

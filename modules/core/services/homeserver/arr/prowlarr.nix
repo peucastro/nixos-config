@@ -41,12 +41,15 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    services.prowlarr = {
-      enable = true;
-      settings.server = {
-        inherit (cfg) port;
-        bindAddress = "127.0.0.1";
+    services = {
+      prowlarr = {
+        enable = true;
+        settings.server = {
+          inherit (cfg) port;
+          bindAddress = "127.0.0.1";
+        };
       };
+      flaresolverr.enable = true;
     };
 
     homeserver.services.backups.paths = [config.services.prowlarr.dataDir];

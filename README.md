@@ -90,6 +90,7 @@ A headless server running various self-hosted services like Jellyfin for media s
 
 |Icon|Name|Description|
 |---|---|---|
+|<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/calibre-web.svg' width=32 height=32>|Calibre-Web|Ebook library manager and reader|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/immich.svg' width=32 height=32>|Immich|Self-hosted photo management|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/jellyfin.svg' width=32 height=32>|Jellyfin|Media streaming server|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/jellyseerr.svg' width=32 height=32>|Jellyseerr|Media request and management for Jellyfin.|
@@ -99,6 +100,8 @@ A headless server running various self-hosted services like Jellyfin for media s
 |Icon|Name|Description|
 |---|---|---|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/glances.svg' width=32 height=32>|Glances|System monitoring web UI|
+|<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/grafana.svg' width=32 height=32>|Grafana|Analytics and monitoring dashboards|
+|<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/prometheus.svg' width=32 height=32>|Prometheus|Metrics collection and alerting|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/uptime-kuma.svg' width=32 height=32>|Uptime Kuma|Self-hosted monitoring service|
 
 ### Network
@@ -122,6 +125,8 @@ A headless server running various self-hosted services like Jellyfin for media s
 |---|---|---|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/filebrowser.svg' width=32 height=32>|Filebrowser|Web file manager|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/homepage.png' width=32 height=32>|Homepage|Application dashboard.|
+|<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/linkwarden.png' width=32 height=32>|Linkwarden|Bookmark manager and archive|
+|<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/stirling-pdf.svg' width=32 height=32>|Stirling PDF|PDF manipulation and conversion tool|
 
 ## License
 

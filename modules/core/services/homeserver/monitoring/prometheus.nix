@@ -44,7 +44,7 @@ in {
   config = lib.mkIf cfg.enable {
     services.prometheus = {
       enable = true;
-      port = cfg.port;
+      inherit (cfg) port;
 
       exporters.node = {
         enable = true;
