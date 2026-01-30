@@ -37,6 +37,11 @@ in {
         type = lib.types.str;
         default = "Servarr";
       };
+      widget = lib.mkOption {
+        type = lib.types.attrs;
+        default = {};
+        description = "Homepage widget configuration for Radarr";
+      };
     };
   };
 
@@ -61,8 +66,17 @@ in {
       };
     };
 
-    homeserver.services.backups.paths = [config.services.radarr.dataDir];
-
-    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+    homeserver = {
+      services = {
+        radarr.homepage.widget = {
+          type = "radarr";
+          url = "http://127.0.0.1:${toString cfg.port}";
+          key = "{{HOMEPAGE_VAR_RADARR_API_KEY}}";
+          enableQueue = true;
+        };
+        backups.paths = [config.services.radarr.dataDir];
+      };
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }

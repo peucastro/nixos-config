@@ -18,6 +18,12 @@
       owner = "caddy";
       group = "caddy";
     };
+    homepage-env = {
+      file = "${secrets}/homepage_env.age";
+      mode = "0400";
+      owner = "homepage-dashboard";
+      group = "homepage-dashboard";
+    };
     radarr-api-key = {
       file = "${secrets}/radarr-api-key.age";
       mode = "0400";
@@ -35,6 +41,12 @@
       mode = "0400";
       owner = config.services.lidarr.user;
       group = config.services.lidarr.group;
+    };
+    prowlarr-api-key = {
+      file = "${secrets}/prowlarr-api-key.age";
+      mode = "0440";
+      owner = "prowlarr";
+      group = "prowlarr";
     };
     linkwarden-env = {
       file = "${secrets}/linkwarden-env.age";

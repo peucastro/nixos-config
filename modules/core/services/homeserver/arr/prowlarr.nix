@@ -47,6 +47,20 @@ in {
         inherit (cfg) port;
         bindAddress = "127.0.0.1";
       };
+      environmentFiles = [config.age.secrets.prowlarr-api-key.path];
+    };
+
+    users = {
+      users.prowlarr = {
+        isSystemUser = true;
+        group = "prowlarr";
+      };
+      groups.prowlarr = {};
+    };
+
+    systemd.services.prowlarr.serviceConfig = {
+      User = "prowlarr";
+      Group = "prowlarr";
     };
 
     homeserver.services.backups.paths = [config.services.prowlarr.dataDir];

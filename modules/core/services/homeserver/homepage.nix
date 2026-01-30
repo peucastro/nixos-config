@@ -50,6 +50,7 @@ in {
     services.homepage-dashboard = {
       enable = true;
       listenPort = cfg.port;
+      environmentFile = config.age.secrets.homepage-env.path;
       settings = {
         title = "Home server";
         description = "My Personal Home server";
@@ -124,14 +125,34 @@ in {
           "${cat}" =
             lib.lists.forEach
             (lib.attrsets.mapAttrsToList (name: _value: name) (homepageServices "${cat}"))
-            (x: {
-              "${config.homeserver.services.${x}.homepage.name}" = {
-                icon = config.homeserver.services.${x}.homepage.icon;
-                description = config.homeserver.services.${x}.homepage.description;
-                href = "https://${config.homeserver.services.${x}.hostname}";
-              };
+            (x: let
+              serviceCfg = config.homeserver.services.${x};
+              hasWidget = serviceCfg.homepage ? widget && serviceCfg.homepage.widget ? type;
+            in {
+              "${serviceCfg.homepage.name}" =
+                {
+                  icon = serviceCfg.homepage.icon;
+                  description = serviceCfg.homepage.description;
+                  href = "https://${serviceCfg.hostname}";
+                }
+                // (lib.optionalAttrs hasWidget {
+                  widget = serviceCfg.homepage.widget;
+                });
             });
         });
+    };
+
+    users = {
+      users.homepage-dashboard = {
+        isSystemUser = true;
+        group = "homepage-dashboard";
+      };
+      groups.homepage-dashboard = {};
+    };
+
+    systemd.services.homepage-dashboard.serviceConfig = {
+      User = "homepage-dashboard";
+      Group = "homepage-dashboard";
     };
 
     homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
