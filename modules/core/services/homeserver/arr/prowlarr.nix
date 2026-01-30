@@ -52,6 +52,14 @@ in {
       flaresolverr.enable = true;
     };
 
+    systemd.services.flaresolverr = {
+      environment = {
+        "HEADLESS" = "true";
+        "LOG_LEVEL" = "debug";
+        "EXTRA_CHROME_FLAGS" = "--no-sandbox --disable-dev-shm-usage --disable-gpu --disable-software-rasterizer";
+      };
+    };
+
     homeserver.services.backups.paths = [config.services.prowlarr.dataDir];
 
     homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
