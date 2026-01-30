@@ -37,6 +37,7 @@
       radarr.enable = true;
       sonarr.enable = true;
       lidarr.enable = true;
+      readarr.enable = true;
       prowlarr.enable = true;
       soulseek.enable = true;
       qbittorrent = {

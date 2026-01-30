@@ -43,8 +43,13 @@ in {
   config = lib.mkIf cfg.enable {
     services.lidarr = {
       enable = true;
-      settings.server.port = cfg.port;
       group = "media";
+      settings = {
+        server = {
+          inherit (cfg) port;
+          bindAddress = "127.0.0.1";
+        };
+      };
     };
 
     systemd.tmpfiles.settings = {

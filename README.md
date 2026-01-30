@@ -120,6 +120,7 @@ A headless server running various self-hosted services like Jellyfin for media s
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/lidarr.svg' width=32 height=32>|Lidarr|Music collection manager for Usenet and BitTorrent|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/prowlarr.svg' width=32 height=32>|Prowlarr|Indexer manager for Usenet and BitTorrent|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/radarr.svg' width=32 height=32>|Radarr|Movie collection manager for Usenet and BitTorrent|
+|<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/readarr.svg' width=32 height=32>|Readarr|Ebook and audiobook collection manager for Usenet and BitTorrent|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/sonarr.svg' width=32 height=32>|Sonarr|TV show collection manager for Usenet and BitTorrent|
 
 ### Utilities

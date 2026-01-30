@@ -17,7 +17,7 @@ in {
 
     hostname = lib.mkOption {
       type = lib.types.str;
-      default = "books.${config.homeserver.baseDomain}";
+      default = "calibre.${config.homeserver.baseDomain}";
       description = "The public DNS hostname used to access Calibre-Web.";
     };
 
