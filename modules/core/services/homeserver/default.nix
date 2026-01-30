@@ -14,7 +14,9 @@
     ./jellyfin.nix
     ./jellyseerr.nix
     ./linkwarden.nix
+    ./navidrome.nix
     ./qbittorrent.nix
+    ./soulseek.nix
     ./stirling-pdf.nix
     ./tailscale.nix
     ./uptime-kuma.nix

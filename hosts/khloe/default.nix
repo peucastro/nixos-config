@@ -32,10 +32,13 @@
       filebrowser.enable = true;
       immich.enable = true;
       jellyfin.enable = true;
+      navidrome.enable = true;
       bazarr.enable = true;
       radarr.enable = true;
       sonarr.enable = true;
+      lidarr.enable = true;
       prowlarr.enable = true;
+      soulseek.enable = true;
       qbittorrent = {
         enable = true;
         hostname = "qbittorrent.${config.homeserver.baseDomain}";

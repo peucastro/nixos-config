@@ -85,6 +85,7 @@ A headless server running various self-hosted services like Jellyfin for media s
 |---|---|---|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/deluge.svg' width=32 height=32>|Deluge|BitTorrent client with web UI|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/qbittorrent.svg' width=32 height=32>|qBittorrent|Bittorrent client with web UI|
+|<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/soulseek.png' width=32 height=32>|Soulseek|Peer-to-peer music sharing|
 
 ### Media
 
@@ -94,6 +95,7 @@ A headless server running various self-hosted services like Jellyfin for media s
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/immich.svg' width=32 height=32>|Immich|Self-hosted photo management|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/jellyfin.svg' width=32 height=32>|Jellyfin|Media streaming server|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/jellyseerr.svg' width=32 height=32>|Jellyseerr|Media request and management for Jellyfin.|
+|<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/navidrome.svg' width=32 height=32>|Navidrome|Modern music server and streamer|
 
 ### Monitoring
 
@@ -115,6 +117,7 @@ A headless server running various self-hosted services like Jellyfin for media s
 |Icon|Name|Description|
 |---|---|---|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bazarr.svg' width=32 height=32>|Bazarr|Subtitle management for Radarr/Sonarr|
+|<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/lidarr.svg' width=32 height=32>|Lidarr|Music collection manager for Usenet and BitTorrent|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/prowlarr.svg' width=32 height=32>|Prowlarr|Indexer manager for Usenet and BitTorrent|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/radarr.svg' width=32 height=32>|Radarr|Movie collection manager for Usenet and BitTorrent|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/sonarr.svg' width=32 height=32>|Sonarr|TV show collection manager for Usenet and BitTorrent|

@@ -36,5 +36,11 @@
       owner = "linkwarden";
       group = "linkwarden";
     };
+    soulseek-env = {
+      file = "${secrets}/soulseek-env.age";
+      mode = "0400";
+      owner = config.services.slskd.user;
+      group = config.services.slskd.group;
+    };
   };
 }
