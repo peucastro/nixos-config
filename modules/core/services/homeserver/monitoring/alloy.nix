@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: let
-  cfg = config.homeserver.services.monitoring.alloy;
-  lokiPort = config.homeserver.services.monitoring.loki.port;
+  cfg = config.homeserver.services.alloy;
+  lokiPort = config.homeserver.services.loki.port;
 
   alloyConfig = pkgs.writeText "config.alloy" ''
     loki.relabel "journal_labels" {
@@ -29,7 +29,7 @@
     }
   '';
 in {
-  options.homeserver.services.monitoring.alloy = {
+  options.homeserver.services.alloy = {
     enable = lib.mkEnableOption "Alloy log collection agent";
   };
 

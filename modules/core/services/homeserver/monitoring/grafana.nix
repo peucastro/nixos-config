@@ -3,16 +3,16 @@
   lib,
   ...
 }: let
-  cfg = config.homeserver.services.monitoring.grafana;
-  prometheusPort = config.homeserver.services.monitoring.prometheus.port;
-  lokiPort = config.homeserver.services.monitoring.loki.port;
+  cfg = config.homeserver.services.grafana;
+  prometheusPort = config.homeserver.services.prometheus.port;
+  lokiPort = config.homeserver.services.loki.port;
 in {
-  options.homeserver.services.monitoring.grafana = {
+  options.homeserver.services.grafana = {
     enable = lib.mkEnableOption "Grafana analytics and monitoring platform";
 
     port = lib.mkOption {
       type = lib.types.port;
-      default = 3003;
+      default = 3004;
       description = "The TCP port on which Grafana will listen internally.";
     };
 

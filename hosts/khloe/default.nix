@@ -24,6 +24,7 @@
     timeZone = "Europe/Lisbon";
     lanIp = "10.0.2.15";
     services = {
+      monitoring.enable = true;
       caddy.enable = true;
       tailscale.enable = true;
       adguardhome.enable = true;
@@ -41,8 +42,11 @@
       };
       deluge.enable = true;
       jellyseerr.enable = true;
+      linkwarden.enable = true;
       glances.enable = true;
+      stirling-pdf.enable = true;
       uptime-kuma.enable = true;
+      calibre-web.enable = true;
       backups = {
         enable = true;
         repository = "/home/homeserver/backups";

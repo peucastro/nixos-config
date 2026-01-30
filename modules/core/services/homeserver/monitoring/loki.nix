@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.homeserver.services.monitoring.loki;
+  cfg = config.homeserver.services.loki;
   dataDir = config.services.loki.dataDir;
 in {
-  options.homeserver.services.monitoring.loki = {
+  options.homeserver.services.loki = {
     enable = lib.mkEnableOption "Loki log aggregation system";
 
     port = lib.mkOption {

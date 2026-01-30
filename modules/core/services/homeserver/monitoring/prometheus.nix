@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.homeserver.services.monitoring.prometheus;
+  cfg = config.homeserver.services.prometheus;
   workingDir = "/var/lib/" + config.services.prometheus.stateDir;
 in {
-  options.homeserver.services.monitoring.prometheus = {
+  options.homeserver.services.prometheus = {
     enable = lib.mkEnableOption "Prometheus monitoring system";
 
     port = lib.mkOption {
