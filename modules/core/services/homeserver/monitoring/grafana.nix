@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.homeserver.services.grafana;
@@ -67,6 +68,31 @@ in {
             }
           ];
         };
+        dashboards.settings.providers = [
+          {
+            name = "Default";
+            options.path = "/etc/grafana-dashboards";
+          }
+        ];
+      };
+    };
+
+    environment.etc = {
+      "grafana-dashboards/node-exporter.json" = {
+        source = pkgs.fetchurl {
+          url = "https://grafana.com/api/dashboards/1860/revisions/37/download";
+          hash = "sha256-1DE1aaanRHHeCOMWDGdOS1wBXxOF84UXAjJzT5Ek6mM=";
+        };
+        group = "grafana";
+        user = "grafana";
+      };
+      "grafana-dashboards/caddy.json" = {
+        source = pkgs.fetchurl {
+          url = "https://grafana.com/api/dashboards/20802/revisions/1/download";
+          hash = "sha256-vSt63PakGp5NzKFjbU5Yh0nDbKET5QRWp5nusM76/O4=";
+        };
+        group = "grafana";
+        user = "grafana";
       };
     };
 

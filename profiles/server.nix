@@ -53,8 +53,8 @@
     postgresql = {
       enable = true;
       settings = {
-        max_connections = 200;
-        shared_buffers = "512MB";
+        max_connections = 500;
+        shared_buffers = "1024MB";
       };
     };
   };

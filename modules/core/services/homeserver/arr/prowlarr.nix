@@ -41,22 +41,11 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    services = {
-      prowlarr = {
-        enable = true;
-        settings.server = {
-          inherit (cfg) port;
-          bindAddress = "127.0.0.1";
-        };
-      };
-      flaresolverr.enable = true;
-    };
-
-    systemd.services.flaresolverr = {
-      environment = {
-        "HEADLESS" = "true";
-        "LOG_LEVEL" = "debug";
-        "EXTRA_CHROME_FLAGS" = "--no-sandbox --disable-dev-shm-usage --disable-gpu --disable-software-rasterizer";
+    services.prowlarr = {
+      enable = true;
+      settings.server = {
+        inherit (cfg) port;
+        bindAddress = "127.0.0.1";
       };
     };
 
