@@ -38,6 +38,11 @@ in {
         type = lib.types.str;
         default = "Network";
       };
+      widget = lib.mkOption {
+        type = lib.types.attrs;
+        default = {};
+        description = "Homepage widget configuration for AdGuard Home";
+      };
     };
   };
 
@@ -261,8 +266,17 @@ in {
       allowedUDPPorts = [53];
     };
 
-    homeserver.services.backups.paths = ["/var/lib/AdGuardHome"];
-
-    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+    homeserver = {
+      services = {
+        adguardhome.homepage.widget = {
+          type = "adguard";
+          url = "http://127.0.0.1:${toString cfg.port}";
+          username = "{{HOMEPAGE_VAR_USERNAME}}";
+          password = "{{HOMEPAGE_VAR_PASSWORD}}";
+        };
+        backups.paths = ["/var/lib/AdGuardHome"];
+      };
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }

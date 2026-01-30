@@ -39,6 +39,11 @@ in {
         type = lib.types.str;
         default = "Monitoring";
       };
+      widget = lib.mkOption {
+        type = lib.types.attrs;
+        default = {};
+        description = "Homepage widget configuration for Grafana";
+      };
     };
   };
 
@@ -70,8 +75,18 @@ in {
       };
     };
 
-    homeserver.services.backups.paths = [config.services.grafana.dataDir];
-
-    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+    homeserver = {
+      services = {
+        grafana.homepage.widget = {
+          type = "grafana";
+          version = 2;
+          url = "http://127.0.0.1:${toString cfg.port}";
+          username = "{{HOMEPAGE_VAR_USERNAME}}";
+          password = "{{HOMEPAGE_VAR_PASSWORD}}";
+        };
+        backups.paths = [config.services.grafana.dataDir];
+      };
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }

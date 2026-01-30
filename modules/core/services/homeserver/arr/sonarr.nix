@@ -37,6 +37,11 @@ in {
         type = lib.types.str;
         default = "Servarr";
       };
+      widget = lib.mkOption {
+        type = lib.types.attrs;
+        default = {};
+        description = "Homepage widget configuration for Sonarr";
+      };
     };
   };
 
@@ -61,8 +66,17 @@ in {
       };
     };
 
-    homeserver.services.backups.paths = [config.services.sonarr.dataDir];
-
-    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+    homeserver = {
+      services = {
+        sonarr.homepage.widget = {
+          type = "sonarr";
+          url = "http://127.0.0.1:${toString cfg.port}";
+          key = "{{HOMEPAGE_VAR_SONARR_API_KEY}}";
+          enableQueue = true;
+        };
+        backups.paths = [config.services.sonarr.dataDir];
+      };
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }

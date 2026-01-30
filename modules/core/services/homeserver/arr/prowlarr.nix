@@ -37,6 +37,11 @@ in {
         type = lib.types.str;
         default = "Servarr";
       };
+      widget = lib.mkOption {
+        type = lib.types.attrs;
+        default = {};
+        description = "Homepage widget configuration for Prowlarr";
+      };
     };
   };
 
@@ -63,8 +68,17 @@ in {
       Group = "prowlarr";
     };
 
-    homeserver.services.backups.paths = [config.services.prowlarr.dataDir];
-
-    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+    homeserver = {
+      services = {
+        prowlarr.homepage.widget = {
+          type = "prowlarr";
+          url = "http://127.0.0.1:${toString cfg.port}";
+          key = "{{HOMEPAGE_VAR_PROWLARR_API_KEY}}";
+          enableQueue = true;
+        };
+        backups.paths = [config.services.prowlarr.dataDir];
+      };
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }

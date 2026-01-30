@@ -80,7 +80,6 @@ in {
                     type = "glances";
                     url = "${baseUrl}${port}";
                     metric = "info";
-                    chart = false;
                     version = 4;
                   };
                 };
@@ -91,7 +90,6 @@ in {
                     type = "glances";
                     url = "${baseUrl}${port}";
                     metric = "sensor:Package id 0";
-                    chart = false;
                     version = 4;
                   };
                 };
@@ -102,7 +100,6 @@ in {
                     type = "glances";
                     url = "${baseUrl}${port}";
                     metric = "process";
-                    chart = false;
                     version = 4;
                   };
                 };
@@ -113,7 +110,6 @@ in {
                     type = "glances";
                     url = "${baseUrl}${port}";
                     metric = "network:enp2s0";
-                    chart = false;
                     version = 4;
                   };
                 };

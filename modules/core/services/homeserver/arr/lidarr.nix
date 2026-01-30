@@ -37,6 +37,12 @@ in {
         type = lib.types.str;
         default = "Servarr";
       };
+
+      widget = lib.mkOption {
+        type = lib.types.attrs;
+        default = {};
+        description = "Homepage widget configuration for Lidarr";
+      };
     };
   };
 
@@ -63,8 +69,17 @@ in {
       };
     };
 
-    homeserver.services.backups.paths = [config.services.lidarr.dataDir];
-
-    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+    homeserver = {
+      services = {
+        lidarr.homepage.widget = {
+          type = "lidarr";
+          url = "http://127.0.0.1:${toString cfg.port}";
+          key = "{{HOMEPAGE_VAR_LIDARR_API_KEY}}";
+          enableQueue = true;
+        };
+        backups.paths = [config.services.lidarr.dataDir];
+      };
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }
