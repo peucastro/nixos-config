@@ -1,7 +1,7 @@
 {lib, ...}: {
   options.custom.gpuChoice = lib.mkOption {
-    type = lib.types.enum ["amd" "nvidia"];
-    description = "Choose GPU setup (amd or nvidia)";
+    type = lib.types.enum ["amd" "nvidia" "intel"];
+    description = "Choose GPU setup (amd, nvidia, or intel)";
     default = "amd";
     example = "nvidia";
   };
@@ -13,5 +13,5 @@
     };
   };
 
-  imports = [./amdgpu.nix ./nvidia.nix];
+  imports = [./amdgpu.nix ./nvidia.nix ./intel.nix];
 }

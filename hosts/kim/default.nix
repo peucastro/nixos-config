@@ -19,6 +19,8 @@
     ];
   };
 
+  custom.gpuChoice = "intel";
+
   homeserver = {
     timeZone = "Europe/Lisbon";
     lanIp = "192.168.1.100";

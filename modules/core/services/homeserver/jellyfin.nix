@@ -48,12 +48,16 @@ in {
       groups.media = {};
     };
 
-    systemd.tmpfiles.settings = {
-      "10-media" = {
-        "/data/media".d = {
-          user = "media";
-          group = "media";
-          mode = "0775";
+    systemd = {
+      services.jellyfin.environment.MALLOC_TRIM_THRESHOLD_ = "100000";
+
+      tmpfiles.settings = {
+        "10-media" = {
+          "/data/media".d = {
+            user = "media";
+            group = "media";
+            mode = "0775";
+          };
         };
       };
     };

@@ -7,4 +7,6 @@
     ../../secrets
     ../../profiles/laptop.nix
   ];
+
+  custom.gpuChoice = "amd";
 }

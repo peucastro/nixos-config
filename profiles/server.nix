@@ -7,6 +7,7 @@
     ../secrets/default.nix
     ../secrets/server.nix
     ../modules/core/base
+    ../modules/core/hardware
     ../modules/core/server
   ];
 
