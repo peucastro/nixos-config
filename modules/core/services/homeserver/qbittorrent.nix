@@ -37,6 +37,11 @@ in {
         type = lib.types.str;
         default = "Downloads";
       };
+      widget = lib.mkOption {
+        type = lib.types.attrs;
+        default = {};
+        description = "Homepage widget configuration for qBittorrent";
+      };
     };
   };
 
@@ -65,6 +70,18 @@ in {
       };
     };
 
-    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+    homeserver = {
+      services = {
+        qbittorrent.homepage.widget = {
+          type = "qbittorrent";
+          url = "http://127.0.0.1:${toString cfg.port}";
+          username = "{{HOMEPAGE_VAR_USERNAME}}";
+          password = "{{HOMEPAGE_VAR_PASSWORD}}";
+          enableLeechProgress = true;
+          enableLeechSize = true;
+        };
+      };
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }
