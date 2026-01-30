@@ -24,33 +24,46 @@
     timeZone = "Europe/Lisbon";
     lanIp = "10.0.2.15";
     services = {
+      # Monitoring
+      glances.enable = true;
       monitoring.enable = true;
+      uptime-kuma.enable = true;
+
+      # Networking
+      adguardhome.enable = true;
       caddy.enable = true;
       tailscale.enable = true;
-      adguardhome.enable = true;
-      homepage.enable = true;
+
+      # Utilities
       filebrowser.enable = true;
+      homepage.enable = true;
+      linkwarden.enable = true;
+      stirling-pdf.enable = true;
+
+      # Media
+      calibre-web.enable = true;
       immich.enable = true;
       jellyfin.enable = true;
+      jellyseerr.enable = true;
       navidrome.enable = true;
+
+      # Servarr
       bazarr.enable = true;
-      radarr.enable = true;
-      sonarr.enable = true;
       lidarr.enable = true;
-      readarr.enable = true;
       prowlarr.enable = true;
-      soulseek.enable = true;
+      radarr.enable = true;
+      readarr.enable = true;
+      sonarr.enable = true;
+
+      # Downloads
+      deluge.enable = true;
       qbittorrent = {
         enable = true;
         hostname = "qbittorrent.${config.homeserver.baseDomain}";
       };
-      deluge.enable = true;
-      jellyseerr.enable = true;
-      linkwarden.enable = true;
-      glances.enable = true;
-      stirling-pdf.enable = true;
-      uptime-kuma.enable = true;
-      calibre-web.enable = true;
+      soulseek.enable = true;
+
+      # Backups
       backups = {
         enable = true;
         repository = "/home/homeserver/backups";

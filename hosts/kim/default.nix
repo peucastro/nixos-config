@@ -25,29 +25,40 @@
     timeZone = "Europe/Lisbon";
     lanIp = "192.168.1.100";
     services = {
+      # Monitoring
+      glances.enable = true;
       monitoring.enable = true;
+      uptime-kuma.enable = true;
+
+      # Networking
+      adguardhome.enable = true;
       caddy.enable = true;
       tailscale.enable = true;
-      adguardhome.enable = true;
-      homepage.enable = true;
+
+      # Utilities
       filebrowser.enable = true;
+      homepage.enable = true;
+      linkwarden.enable = true;
+
+      # Media
+      calibre-web.enable = true;
       immich.enable = true;
       jellyfin.enable = true;
+      jellyseerr.enable = true;
       navidrome.enable = true;
+
+      # Servarr
       bazarr.enable = true;
+      lidarr.enable = true;
+      prowlarr.enable = true;
       radarr.enable = true;
       sonarr.enable = true;
-      lidarr.enable = true;
-      readarr.enable = true;
-      prowlarr.enable = true;
-      soulseek.enable = true;
+
+      # Downloads
       qbittorrent.enable = true;
-      jellyseerr.enable = true;
-      linkwarden.enable = true;
-      glances.enable = true;
-      stirling-pdf.enable = true;
-      uptime-kuma.enable = true;
-      calibre-web.enable = true;
+      soulseek.enable = true;
+
+      # Backups
       backups = {
         enable = true;
         repository = "/mnt/backups";

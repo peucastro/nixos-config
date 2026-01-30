@@ -50,7 +50,22 @@ in {
 
       settings = {
         web.port = cfg.port;
-        shares.directories = [];
+        flags = {
+          noShareScan = true;
+          noConfigWatch = true;
+          noSqlitePooling = true;
+        };
+        shares = {
+          directories = [];
+          cache = {
+            storageMode = "disk";
+            retention = "7.00:00:00";
+            workers = 1;
+          };
+        };
+        global.upload.slots = 1;
+        groups.default.upload.slots = 1;
+        soulseek.distributed_network.enabled = false;
         directories = {
           downloads = "/data/downloads/soulseek";
           incomplete = "/data/downloads/soulseek/incomplete";

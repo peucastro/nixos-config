@@ -30,6 +30,12 @@
       owner = config.services.sonarr.user;
       group = config.services.sonarr.group;
     };
+    lidarr-api-key = {
+      file = "${secrets}/lidarr-api-key.age";
+      mode = "0400";
+      owner = config.services.lidarr.user;
+      group = config.services.lidarr.group;
+    };
     linkwarden-env = {
       file = "${secrets}/linkwarden-env.age";
       mode = "0400";

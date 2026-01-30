@@ -50,6 +50,7 @@ in {
           bindAddress = "127.0.0.1";
         };
       };
+      environmentFiles = [config.age.secrets.radarr-api-key.path];
     };
 
     systemd.tmpfiles.settings = {

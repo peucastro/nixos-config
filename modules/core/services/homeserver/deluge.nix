@@ -57,7 +57,6 @@ in {
         upnp = false;
         natpmp = false;
       };
-      authFile = config.age.secrets.deluge-auth.path;
     };
 
     systemd.tmpfiles.settings = {
