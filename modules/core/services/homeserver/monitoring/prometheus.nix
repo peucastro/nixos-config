@@ -46,10 +46,17 @@ in {
       enable = true;
       inherit (cfg) port;
 
-      exporters.node = {
-        enable = true;
-        enabledCollectors = ["systemd" "diskstats" "netdev"];
-        port = 9100;
+      exporters = {
+        node = {
+          enable = true;
+          enabledCollectors = ["systemd" "diskstats" "netdev"];
+          port = 9100;
+        };
+
+        smartctl = {
+          enable = true;
+          port = 9633;
+        };
       };
 
       scrapeConfigs = [
@@ -77,8 +84,18 @@ in {
             }
           ];
         }
+        {
+          job_name = "smartctl";
+          static_configs = [
+            {
+              targets = ["127.0.0.1:9633"];
+            }
+          ];
+        }
       ];
     };
+
+    services.smartd.enable = true;
 
     homeserver.services.backups.paths = [workingDir];
 
