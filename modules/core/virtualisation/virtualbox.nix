@@ -1,10 +1,13 @@
-{user, ...}: {
+{
+  user,
+  config,
+  ...
+}: {
   virtualisation.virtualbox.host = {
     enable = true;
-    enableKvm = true;
-    addNetworkInterface = false;
     enableExtensionPack = true;
   };
 
   users.extraGroups.vboxusers.members = [user.login];
+  boot.extraModulePackages = [config.boot.kernelPackages.virtualbox];
 }
