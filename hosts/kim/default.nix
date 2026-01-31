@@ -24,6 +24,7 @@
   homeserver = {
     timeZone = "Europe/Lisbon";
     lanIp = "192.168.1.100";
+    motd.enable = true;
     services = {
       # Monitoring
       glances.enable = true;
