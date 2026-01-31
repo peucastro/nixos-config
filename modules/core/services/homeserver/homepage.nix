@@ -77,6 +77,32 @@ in {
         ];
       };
       allowedHosts = "localhost:${toString cfg.port},127.0.0.1:${toString cfg.port},${toString cfg.hostname}";
+      widgets = [
+        {
+          datetime = {
+            text_size = "xl";
+            format = {
+              timeStyle = "short";
+              hourCycle = "h23";
+            };
+          };
+        }
+        {
+          search = {
+            provider = "duckduckgo";
+            target = "_blank";
+          };
+        }
+        {
+          openmeteo = {
+            units = "metric";
+            cache = 5;
+            format = {
+              maximumFractionDigits = 1;
+            };
+          };
+        }
+      ];
       services =
         [
           {

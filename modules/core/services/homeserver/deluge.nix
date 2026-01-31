@@ -45,6 +45,7 @@ in {
       enable = true;
       declarative = true;
       group = "media";
+      authFile = "/var/lib/deluge/auth";
       web = {
         enable = true;
         inherit (cfg) port;
