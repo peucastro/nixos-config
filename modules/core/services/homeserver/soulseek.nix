@@ -44,7 +44,7 @@ in {
     services.slskd = {
       enable = true;
       openFirewall = true;
-      domain = cfg.hostname;
+      domain = null;
       environmentFile = config.age.secrets.soulseek-env.path;
       group = "media";
 
