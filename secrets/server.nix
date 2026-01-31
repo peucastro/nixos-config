@@ -60,5 +60,11 @@
       owner = config.services.slskd.user;
       group = config.services.slskd.group;
     };
+    miniflux-env = {
+      file = "${secrets}/miniflux-env.age";
+      mode = "0400";
+      owner = "miniflux";
+      group = "miniflux";
+    };
   };
 }

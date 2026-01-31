@@ -14,6 +14,7 @@
     ./jellyfin.nix
     ./jellyseerr.nix
     ./linkwarden.nix
+    ./miniflux.nix
     ./navidrome.nix
     ./qbittorrent.nix
     ./soulseek.nix

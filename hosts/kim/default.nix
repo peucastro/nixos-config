@@ -40,6 +40,7 @@
       filebrowser.enable = true;
       homepage.enable = true;
       linkwarden.enable = true;
+      miniflux.enable = true;
 
       # Media
       calibre-web.enable = true;
