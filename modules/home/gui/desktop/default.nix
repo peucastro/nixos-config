@@ -6,7 +6,7 @@
     ./gtk.nix
     ./hypridle.nix
     ./hyprlock.nix
-    # ./kanshi.nix
+    ./kanshi.nix
     ./qt.nix
     ./rofi.nix
     ./swappy.nix
