@@ -55,7 +55,17 @@ in {
         title = "Home server";
         description = "My Personal Home server";
         color = "neutral";
-        headerStyle = "boxedWidgets";
+        favicon = "https://nixos.org/favicon.svg";
+        headerStyle = "boxed";
+        disableCollapse = true;
+        quicklaunch = {
+          searchDescriptions = true;
+          showSearchSuggestions = true;
+          provider = "duckduckgo";
+        };
+        disableIndexing = true;
+        hideVersion = true;
+        disableUpdateCheck = true;
         layout = [
           {
             Glances = {
@@ -130,6 +140,9 @@ in {
                   icon = serviceCfg.homepage.icon;
                   description = serviceCfg.homepage.description;
                   href = "https://${serviceCfg.hostname}";
+
+                  siteMonitor = "https://${serviceCfg.hostname}";
+                  statusStyle = "dot";
                 }
                 // (lib.optionalAttrs hasWidget {
                   widget = serviceCfg.homepage.widget;
