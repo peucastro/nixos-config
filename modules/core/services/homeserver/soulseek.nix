@@ -59,7 +59,7 @@ in {
           directories = [];
           cache = {
             storageMode = "disk";
-            retention = "7.00:00:00";
+            retention = "1440";
             workers = 1;
           };
         };
