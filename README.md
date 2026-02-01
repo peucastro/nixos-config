@@ -130,6 +130,7 @@ A headless server running various self-hosted services like Jellyfin for media s
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/filebrowser.svg' width=32 height=32>|Filebrowser|Web file manager|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/homepage.png' width=32 height=32>|Homepage|Application dashboard.|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/linkwarden.png' width=32 height=32>|Linkwarden|Bookmark manager and archive|
+|<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/miniflux.svg' width=32 height=32>|Miniflux|Minimalist and opinionated feed reader|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/stirling-pdf.svg' width=32 height=32>|Stirling PDF|PDF manipulation and conversion tool|
 
 ## License

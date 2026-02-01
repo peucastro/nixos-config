@@ -48,12 +48,6 @@
       owner = "prowlarr";
       group = "prowlarr";
     };
-    linkwarden-env = {
-      file = "${secrets}/linkwarden-env.age";
-      mode = "0400";
-      owner = "linkwarden";
-      group = "linkwarden";
-    };
     soulseek-env = {
       file = "${secrets}/soulseek-env.age";
       mode = "0400";
