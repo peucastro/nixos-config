@@ -3,10 +3,6 @@
     enable = true;
     package = null;
     portalPackage = null;
-    systemd = {
-      enable = true;
-      variables = ["--all"];
-    };
     xwayland.enable = true;
     settings = {
       "$modifier" = "SUPER";
