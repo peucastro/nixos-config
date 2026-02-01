@@ -57,8 +57,6 @@ in {
       };
     };
 
-    homeserver.services.backups.paths = ["/var/lib/stirling-pdf"];
-
     homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
   };
 }

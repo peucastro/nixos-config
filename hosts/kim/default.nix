@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./disk-configuration.nix
@@ -62,8 +62,20 @@
       # Backups
       backups = {
         enable = true;
-        repository = "/mnt/backups";
         passwordFile = "/mnt/backups/restic-password";
+
+        targets = {
+          local = {
+            repository = "/mnt/backups";
+            timer = "daily";
+          };
+
+          remote = {
+            repository = "s3:https://s3.eu-central-003.backblazeb2.com/kim-backups";
+            environmentFile = config.age.secrets.backblaze-api-key.path;
+            timer = "weekly";
+          };
+        };
       };
     };
   };

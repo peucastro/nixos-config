@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.homeserver.services.backups;
@@ -12,36 +13,47 @@ in {
       description = "List of folders to back up";
       default = [];
     };
-    repository = lib.mkOption {
-      type = lib.types.str;
-      description = "Restic repository (local path or remote URL)";
-    };
     passwordFile = lib.mkOption {
       type = lib.types.path;
-      description = "File containing the Restic repository password";
+      description = "The shared encryption password for all repos";
     };
-    timer = lib.mkOption {
-      type = lib.types.str;
-      default = "daily";
-      description = "systemd timer frequency (e.g., daily, weekly)";
+    targets = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.submodule {
+        options = {
+          repository = lib.mkOption {type = lib.types.str;};
+          environmentFile = lib.mkOption {
+            type = lib.types.nullOr lib.types.path;
+            default = null;
+          };
+          timer = lib.mkOption {
+            type = lib.types.str;
+            default = "daily";
+          };
+        };
+      });
     };
   };
 
   config = lib.mkIf cfg.enable {
-    services.restic.backups = {
-      local = {
-        inherit (cfg) repository passwordFile paths;
+    services.restic.backups =
+      lib.mapAttrs (name: target: {
+        inherit (cfg) paths passwordFile;
+        inherit (target) repository environmentFile;
+
+        initialize = true;
         timerConfig = {
-          OnCalendar = cfg.timer;
+          OnCalendar = target.timer;
           Persistent = true;
         };
-        initialize = true;
+
         pruneOpts = [
           "--keep-daily 7"
           "--keep-weekly 3"
           "--keep-monthly 2"
         ];
-      };
-    };
+      })
+      cfg.targets;
+
+    environment.systemPackages = [pkgs.restic];
   };
 }

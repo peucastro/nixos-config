@@ -267,14 +267,11 @@ in {
     };
 
     homeserver = {
-      services = {
-        adguardhome.homepage.widget = {
-          type = "adguard";
-          url = "http://127.0.0.1:${toString cfg.port}";
-          username = "{{HOMEPAGE_VAR_USERNAME}}";
-          password = "{{HOMEPAGE_VAR_PASSWORD}}";
-        };
-        backups.paths = ["/var/lib/AdGuardHome"];
+      services.adguardhome.homepage.widget = {
+        type = "adguard";
+        url = "http://127.0.0.1:${toString cfg.port}";
+        username = "{{HOMEPAGE_VAR_USERNAME}}";
+        password = "{{HOMEPAGE_VAR_PASSWORD}}";
       };
       caddy.vhosts = [{inherit (cfg) hostname port;}];
     };

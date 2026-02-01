@@ -47,7 +47,5 @@ in {
         ];
       };
     };
-
-    homeserver.services.backups.paths = [dataDir];
   };
 }

@@ -60,5 +60,11 @@
       owner = "miniflux";
       group = "miniflux";
     };
+    backblaze-api-key = {
+      file = "${secrets}/backblaze-api-key.age";
+      mode = "0400";
+      owner = "root";
+      group = "root";
+    };
   };
 }

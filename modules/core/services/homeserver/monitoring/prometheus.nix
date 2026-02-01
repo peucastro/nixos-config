@@ -97,8 +97,6 @@ in {
 
     services.smartd.enable = true;
 
-    homeserver.services.backups.paths = [workingDir];
-
     homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
   };
 }

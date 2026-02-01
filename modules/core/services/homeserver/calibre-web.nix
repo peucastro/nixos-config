@@ -44,6 +44,7 @@ in {
   config = lib.mkIf cfg.enable {
     services.calibre-web = {
       enable = true;
+      dataDir = "/data/media/books";
       listen = {
         ip = "127.0.0.1";
         inherit (cfg) port;
