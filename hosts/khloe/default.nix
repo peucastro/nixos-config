@@ -37,7 +37,6 @@
       # Utilities
       filebrowser.enable = true;
       homepage.enable = true;
-      linkwarden.enable = true;
       miniflux.enable = true;
       stirling-pdf.enable = true;
 

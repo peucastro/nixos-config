@@ -13,7 +13,6 @@
     ./immich.nix
     ./jellyfin.nix
     ./jellyseerr.nix
-    ./linkwarden.nix
     ./miniflux.nix
     ./navidrome.nix
     ./qbittorrent.nix
