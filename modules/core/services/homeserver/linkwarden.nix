@@ -46,6 +46,7 @@ in {
       inherit (cfg) port;
       host = "127.0.0.1";
       enableRegistration = true;
+      environmentFile = config.age.secrets.linkwarden-env.path;
     };
 
     homeserver.services.backups.paths = [config.services.linkwarden.storageLocation];

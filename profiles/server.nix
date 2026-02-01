@@ -41,17 +41,7 @@
     };
   };
 
-  services = {
-    xserver.enable = false;
-
-    postgresql = {
-      enable = true;
-      settings = {
-        max_connections = 300;
-        shared_buffers = "1024MB";
-      };
-    };
-  };
+  services.xserver.enable = false;
 
   powerManagement.powertop.enable = true;
 
