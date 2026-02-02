@@ -5,7 +5,6 @@
 }: let
   cfg = config.homeserver.services.grafana;
   prometheusPort = config.homeserver.services.prometheus.port;
-  lokiPort = config.homeserver.services.loki.port;
 in {
   options.homeserver.services.grafana = {
     enable = lib.mkEnableOption "Grafana analytics and monitoring platform";
@@ -61,13 +60,6 @@ in {
               url = "http://127.0.0.1:${toString prometheusPort}";
               access = "proxy";
               isDefault = true;
-              editable = false;
-            }
-            {
-              name = "Loki";
-              type = "loki";
-              url = "http://127.0.0.1:${toString lokiPort}";
-              access = "proxy";
               editable = false;
             }
           ];
