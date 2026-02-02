@@ -75,11 +75,11 @@ in {
           ratelimit_subnet_len_ipv6 = 56;
           ratelimit_whitelist = [];
           refuse_any = true;
-          upstream_dns = ["https://dns.cloudflare.com/dns-query" "https://dns.google/dns-query"];
+          upstream_dns = ["127.0.0.1:5335"];
           upstream_dns_file = "";
           bootstrap_dns = ["1.1.1.1" "8.8.8.8"];
-          fallback_dns = ["9.9.9.9"];
-          upstream_mode = "load_balance";
+          fallback_dns = ["1.1.1.1" "8.8.8.8"];
+          upstream_mode = "parallel";
           fastest_timeout = "1s";
           allowed_clients = [];
           disallowed_clients = [];
@@ -89,10 +89,10 @@ in {
           cache_size = 4194304;
           cache_ttl_min = 60;
           cache_ttl_max = 86400;
-          cache_optimistic = false;
+          cache_optimistic = true;
           bogus_nxdomain = [];
           aaaa_disabled = false;
-          enable_dnssec = true;
+          enable_dnssec = false;
           edns_client_subnet = {
             custom_ip = "";
             enabled = false;
@@ -258,6 +258,49 @@ in {
           rlimit_nofile = 0;
         };
         schema_version = 31;
+      };
+    };
+
+    services.unbound = {
+      enable = true;
+      checkconf = true;
+      settings = {
+        server = {
+          # Network interface
+          interface = ["127.0.0.1"];
+          port = 5335;
+          access-control = ["127.0.0.0/8 allow"];
+          do-not-query-localhost = false;
+
+          # Performance - prefetching
+          prefetch = true;
+          prefetch-key = true;
+
+          # Privacy
+          hide-identity = true;
+          hide-version = true;
+
+          # Cache settings
+          cache-min-ttl = 300;
+          cache-max-ttl = 86400;
+          msg-cache-size = "32m";
+          rrset-cache-size = "64m";
+          key-cache-size = "16m";
+          neg-cache-size = "4m";
+
+          # Unwanted reply threshold for detecting DNS poisoning
+          unwanted-reply-threshold = 10000000;
+
+          # Private address ranges (RFC1918) - prevent DNS rebinding
+          private-address = [
+            "10.0.0.0/8"
+            "172.16.0.0/12"
+            "192.168.0.0/16"
+            "169.254.0.0/16"
+            "fd00::/8"
+            "fe80::/10"
+          ];
+        };
       };
     };
 

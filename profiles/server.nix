@@ -43,7 +43,10 @@
 
   services.xserver.enable = false;
 
-  powerManagement.powertop.enable = true;
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
+  };
 
   environment.systemPackages = [
     # Networking tools
@@ -55,6 +58,7 @@
     pkgs.btop
     pkgs.fastfetch
     pkgs.ncdu
+    pkgs.powertop
 
     # Search and navigation
     pkgs.fd

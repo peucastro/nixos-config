@@ -56,7 +56,7 @@ in {
           bindAddress = "127.0.0.1";
         };
       };
-      environmentFiles = [config.age.secrets.radarr-api-key.path];
+      environmentFiles = [config.age.secrets.lidarr-api-key.path];
     };
 
     systemd.tmpfiles.settings = {
