@@ -58,6 +58,29 @@ in {
 
     environment.systemPackages = [pkgs.healthchecks];
 
-    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+    homeserver = {
+      services = {
+        healthchecks.homepage.widget = {
+          type = "customapi";
+          url = "http://127.0.0.1:${toString cfg.port}/api/v1/checks/";
+          method = "GET";
+          headers = {
+            "X-Api-Key" = "{{HOMEPAGE_VAR_HEALTHCHECKS_API_KEY}}";
+          };
+          mappings = [
+            {
+              field = "checks";
+              label = "Total Monitors";
+              format = "size";
+            }
+            {
+              field = "checks[0].status";
+              label = "Primary Status";
+            }
+          ];
+        };
+      };
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }

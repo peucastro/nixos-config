@@ -103,6 +103,7 @@ A headless server running various self-hosted services like Jellyfin for media s
 |---|---|---|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/glances.svg' width=32 height=32>|Glances|System monitoring web UI|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/grafana.svg' width=32 height=32>|Grafana|Analytics and monitoring dashboards|
+|<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/healthchecks.svg' width=32 height=32>|Healthchecks|Uptime monitoring and alerts|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/prometheus.svg' width=32 height=32>|Prometheus|Metrics collection and alerting|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/uptime-kuma.svg' width=32 height=32>|Uptime Kuma|Self-hosted monitoring service|
 
