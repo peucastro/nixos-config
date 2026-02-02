@@ -37,6 +37,11 @@ in {
         type = lib.types.str;
         default = "Monitoring";
       };
+      widget = lib.mkOption {
+        type = lib.types.attrs;
+        default = {};
+        description = "Homepage widget configuration for Prometheus.";
+      };
     };
   };
 
@@ -114,6 +119,14 @@ in {
 
     services.smartd.enable = true;
 
-    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+    homeserver = {
+      services = {
+        prometheus.homepage.widget = {
+          type = "prometheus";
+          url = "http://127.0.0.1:${toString cfg.port}";
+        };
+      };
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }
