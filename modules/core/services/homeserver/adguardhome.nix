@@ -269,12 +269,17 @@ in {
           # Network interface
           interface = ["127.0.0.1"];
           port = 5335;
-          access-control = ["127.0.0.0/8 allow"];
+          access-control = [
+            "127.0.0.0/8 allow"
+            "10.0.0.0/8 allow"
+            "192.168.0.0/16 allow"
+          ];
           do-not-query-localhost = false;
 
-          # Performance - prefetching
+          # Performance
           prefetch = true;
           prefetch-key = true;
+          num-threads = 2;
 
           # Privacy
           hide-identity = true;
@@ -300,7 +305,23 @@ in {
             "fd00::/8"
             "fe80::/10"
           ];
+
+          tls-cert-bundle = "/etc/ssl/certs/ca-certificates.crt";
         };
+
+        # Forwarding
+        forward-zone = [
+          {
+            name = ".";
+            forward-tls-upstream = "yes";
+            forward-addr = [
+              "1.1.1.1@853#cloudflare-dns.com"
+              "1.0.0.1@853#cloudflare-dns.com"
+              "8.8.8.8@853#dns.google"
+              "8.8.4.4@853#dns.google"
+            ];
+          }
+        ];
       };
     };
 
