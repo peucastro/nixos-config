@@ -162,9 +162,27 @@ in {
           }
           {
             enabled = true;
-            url = "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro.txt";
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_48.txt";
             name = "HaGeZi's Pro Blocklist";
             id = 3;
+          }
+          {
+            enabled = true;
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_27.txt";
+            name = "OISD Blocklist Big";
+            id = 3;
+          }
+          {
+            enabled = true;
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_44.txt";
+            name = "HaGeZi's Threat Intelligence Feeds";
+            id = 4;
+          }
+          {
+            enabled = true;
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_18.txt";
+            name = "Phishing Army";
+            id = 5;
           }
         ];
         whitelist_filters = [];

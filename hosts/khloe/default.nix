@@ -62,6 +62,17 @@
         hostname = "qbittorrent.${config.homeserver.baseDomain}";
       };
       soulseek.enable = true;
+
+      # Backups
+      backups = {
+        enable = true;
+        passwordFile = "/home/homeserver/backups/restic-password";
+
+        targets.local = {
+          repository = "/home/homeserver/backups";
+          timer = "daily";
+        };
+      };
     };
   };
 }
