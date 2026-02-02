@@ -66,5 +66,11 @@
       owner = "root";
       group = "root";
     };
+    healthchecks-api-key = {
+      file = "${secrets}/healthchecks-api-key.age";
+      mode = "0400";
+      owner = config.services.healthchecks.user;
+      group = config.services.healthchecks.group;
+    };
   };
 }

@@ -29,6 +29,10 @@ in {
             type = lib.types.str;
             default = "daily";
           };
+          healthchecksId = lib.mkOption {
+            type = lib.types.nullOr lib.types.str;
+            default = null;
+          };
         };
       });
       default = {};
@@ -52,6 +56,17 @@ in {
           "--keep-weekly 3"
           "--keep-monthly 2"
         ];
+
+        backupCleanupCommand = lib.optionalString (target.healthchecksId != null) ''
+          UUID="${target.healthchecksId}"
+          BASE_URL="http://localhost:${toString config.services.healthchecks.port}"
+
+          if [ "$EXIT_STATUS" = "0" ]; then
+            ${pkgs.curl}/bin/curl -m 10 --retry 5 "$BASE_URL/ping/$UUID"
+          else
+            ${pkgs.curl}/bin/curl -m 10 --retry 5 "$BASE_URL/ping/$UUID/fail"
+          fi
+        '';
       })
       cfg.targets;
 
