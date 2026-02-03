@@ -50,8 +50,9 @@ in {
       };
     };
 
-    homeserver.services.backups.paths = ["/var/lib/navidrome"];
-
-    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+    homeserver = {
+      services.backups.restic.paths = ["/var/lib/navidrome"];
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }

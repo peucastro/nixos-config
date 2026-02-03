@@ -66,11 +66,13 @@
       # Backups
       backups = {
         enable = true;
-        passwordFile = "/home/homeserver/backups/restic-password";
+        restic = {
+          passwordFile = "/home/homeserver/backups/restic-password";
 
-        targets.local = {
-          repository = "/home/homeserver/backups";
-          timer = "daily";
+          targets.local = {
+            repository = "/home/homeserver/backups";
+            timer = "daily";
+          };
         };
       };
     };

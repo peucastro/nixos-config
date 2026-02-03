@@ -47,8 +47,9 @@ in {
       group = "media";
     };
 
-    homeserver.services.backups.paths = [config.services.bazarr.dataDir];
-
-    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+    homeserver = {
+      services.backups.restic.paths = [config.services.bazarr.dataDir];
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }

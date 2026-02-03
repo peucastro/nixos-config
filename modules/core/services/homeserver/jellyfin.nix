@@ -69,7 +69,7 @@ in {
     };
 
     homeserver = {
-      services.backups.paths = [config.services.jellyfin.dataDir];
+      services.backups.restic.paths = [config.services.jellyfin.dataDir];
       caddy.vhosts = [{inherit (cfg) hostname port;}];
     };
   };

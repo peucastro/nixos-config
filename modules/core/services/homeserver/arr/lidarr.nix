@@ -77,7 +77,7 @@ in {
           key = "{{HOMEPAGE_VAR_LIDARR_API_KEY}}";
           enableQueue = true;
         };
-        backups.paths = [config.services.lidarr.dataDir];
+        backups.restic.paths = [config.services.lidarr.dataDir];
       };
       caddy.vhosts = [{inherit (cfg) hostname port;}];
     };

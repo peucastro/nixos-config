@@ -74,7 +74,7 @@ in {
           key = "{{HOMEPAGE_VAR_SONARR_API_KEY}}";
           enableQueue = true;
         };
-        backups.paths = [config.services.sonarr.dataDir];
+        backups.restic.paths = [config.services.sonarr.dataDir];
       };
       caddy.vhosts = [{inherit (cfg) hostname port;}];
     };

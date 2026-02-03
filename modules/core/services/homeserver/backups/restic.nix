@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.homeserver.services.backups;
+  cfg = config.homeserver.services.backups.restic;
 in {
-  options.homeserver.services.backups = {
+  options.homeserver.services.backups.restic = {
     enable = lib.mkEnableOption "Enable Restic backups";
     paths = lib.mkOption {
       type = lib.types.listOf lib.types.str;

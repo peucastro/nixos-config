@@ -76,7 +76,7 @@ in {
           key = "{{HOMEPAGE_VAR_PROWLARR_API_KEY}}";
           enableQueue = true;
         };
-        backups.paths = [config.services.prowlarr.dataDir];
+        backups.restic.paths = [config.services.prowlarr.dataDir];
       };
       caddy.vhosts = [{inherit (cfg) hostname port;}];
     };

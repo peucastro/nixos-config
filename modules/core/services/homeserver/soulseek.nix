@@ -91,8 +91,9 @@ in {
       };
     };
 
-    homeserver.services.backups.paths = ["/var/lib/slskd"];
-
-    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+    homeserver = {
+      services.backups.restic.paths = ["/var/lib/slskd"];
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }

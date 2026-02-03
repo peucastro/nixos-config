@@ -74,7 +74,7 @@ in {
           key = "{{HOMEPAGE_VAR_RADARR_API_KEY}}";
           enableQueue = true;
         };
-        backups.paths = [config.services.radarr.dataDir];
+        backups.restic.paths = [config.services.radarr.dataDir];
       };
       caddy.vhosts = [{inherit (cfg) hostname port;}];
     };

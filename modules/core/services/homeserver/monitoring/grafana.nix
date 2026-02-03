@@ -76,7 +76,7 @@ in {
           username = "{{HOMEPAGE_VAR_USERNAME}}";
           password = "{{HOMEPAGE_VAR_PASSWORD}}";
         };
-        backups.paths = [config.services.grafana.dataDir];
+        backups.restic.paths = [config.services.grafana.dataDir];
       };
       caddy.vhosts = [{inherit (cfg) hostname port;}];
     };

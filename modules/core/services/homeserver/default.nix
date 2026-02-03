@@ -1,9 +1,9 @@
 {
   imports = [
     ./arr
+    ./backups
     ./monitoring
     ./adguardhome.nix
-    ./backups.nix
     ./caddy.nix
     ./calibre-web.nix
     ./deluge.nix

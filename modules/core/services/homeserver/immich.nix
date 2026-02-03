@@ -58,8 +58,9 @@ in {
       };
     };
 
-    homeserver.services.backups.paths = [config.services.immich.mediaLocation];
-
-    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+    homeserver = {
+      services.backups.restic.paths = [config.services.immich.mediaLocation];
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }

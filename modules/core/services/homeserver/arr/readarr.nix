@@ -65,8 +65,9 @@ in {
       };
     };
 
-    homeserver.services.backups.paths = [config.services.readarr.dataDir];
-
-    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+    homeserver = {
+      services.backups.restic.paths = [config.services.readarr.dataDir];
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }

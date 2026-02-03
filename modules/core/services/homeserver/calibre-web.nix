@@ -76,8 +76,9 @@ in {
 
     environment.systemPackages = [pkgs.calibre];
 
-    homeserver.services.backups.paths = [config.services.calibre-web.dataDir];
-
-    homeserver.caddy.vhosts = [{inherit (cfg) hostname port;}];
+    homeserver = {
+      services.backups.restic.paths = [config.services.calibre-web.dataDir];
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }
