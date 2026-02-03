@@ -50,13 +50,8 @@ in {
         Locked = true;
       };
 
-      # HTTPS / DNS
+      # HTTPS
       HttpsOnlyMode = "force_enabled";
-      DNSOverHTTPS = {
-        Enabled = true;
-        ProviderURL = "https://1.1.1.1/dns-query";
-        Locked = true;
-      };
 
       # Extensions
       ExtensionSettings = mkExtensionSettings {
@@ -73,34 +68,6 @@ in {
       DontCheckDefaultBrowser = true;
       NoDefaultBookmarks = true;
       DisablePocket = true;
-
-      # Bookmarks
-      ManagedBookmarks = [
-        {URL = "https://web.whatsapp.com";}
-        {URL = "https://messages.google.com/web/conversations";}
-        {URL = "https://www.linkedin.com";}
-        {URL = "https://www.sofascore.com";}
-        {URL = "https://www.reddit.com";}
-        {URL = "https://www.cifraclub.com.br";}
-        {URL = "https://www.goodreads.com";}
-        {URL = "https://anilist.co/home";}
-        {URL = "https://www.primevideo.com/region/eu/storefront";}
-        {URL = "https://www.youtube.com";}
-        {URL = "https://www.google.com/maps";}
-        {URL = "https://gemini.google.com/app";}
-        {URL = "https://mail.google.com/mail/u/0/#inbox";}
-        {URL = "https://drive.google.com/drive/u/0";}
-        {URL = "https://calendar.google.com/calendar/u/0";}
-        {URL = "https://photos.google.com";}
-        {URL = "https://docs.google.com/document/u/0";}
-        {URL = "https://docs.google.com/spreadsheets/u/0";}
-        {URL = "https://docs.google.com/presentation/u/0";}
-        {URL = "https://play.google.com/books";}
-        {URL = "https://accio.pt/home";}
-        {URL = "https://www.figma.com";}
-        {URL = "https://www.notion.so";}
-        {URL = "https://fast.com/pt";}
-      ];
 
       Preferences = mkLockedAttrs {
         # General UI / usability
