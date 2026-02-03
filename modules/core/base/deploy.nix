@@ -128,7 +128,7 @@
       if [ -z "$FLAKE_HOST" ]; then
         REBUILD_CMD="sudo nixos-rebuild switch --flake .#"
       else
-        REBUILD_CMD="nixos-rebuild switch --flake .#$FLAKE_HOST --target-host $SSH_TARGET --use-remote-sudo --ask-sudo-password"
+        REBUILD_CMD="nixos-rebuild switch --flake .#$FLAKE_HOST --target-host $SSH_TARGET --sudo --ask-sudo-password"
       fi
 
       if $REBUILD_CMD; then

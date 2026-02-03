@@ -49,13 +49,13 @@
       options = ["defaults" "nofail"];
     };
     "/mnt/backups/restic" = {
-      device = "none";
+      device = "/mnt/backups/restic";
       fsType = "none";
       options = ["bind" "rbind" "create=dir"];
       depends = ["/mnt/backups"];
     };
     "/mnt/backups/postgres" = {
-      device = "none";
+      device = "/mnt/backups/postgres";
       fsType = "none";
       options = ["bind" "rbind" "create=dir"];
       depends = ["/mnt/backups"];

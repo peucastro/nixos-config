@@ -24,5 +24,15 @@ in {
       enable = true;
       inherit (cfg) location databases;
     };
+
+    systemd.tmpfiles.settings = {
+      "10-backups-postgres" = {
+        "${cfg.location}".d = {
+          user = "postgres";
+          group = "postgres";
+          mode = "0700";
+        };
+      };
+    };
   };
 }
