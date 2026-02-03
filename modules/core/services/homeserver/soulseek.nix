@@ -50,22 +50,20 @@ in {
 
       settings = {
         web.port = cfg.port;
-        flags = {
-          noShareScan = true;
-          noConfigWatch = true;
-          noSqlitePooling = true;
-        };
+        flags.noConfigWatch = true;
         shares = {
-          directories = [];
+          directories = ["/var/lib/slskd/shared"];
           cache = {
+            enabled = true;
             storageMode = "disk";
-            retention = "1440";
-            workers = 1;
           };
         };
         global.upload.slots = 1;
         groups.default.upload.slots = 1;
-        soulseek.distributed_network.enabled = false;
+        soulseek = {
+          distributed_network.enabled = false;
+          search.replies.enabled = false;
+        };
         directories = {
           downloads = "/data/downloads/soulseek";
           incomplete = "/data/downloads/soulseek/incomplete";
@@ -81,6 +79,11 @@ in {
           mode = "0775";
         };
         "/data/downloads/soulseek/incomplete".d = {
+          user = "slskd";
+          group = "media";
+          mode = "0775";
+        };
+        "/var/lib/slskd/shared".d = {
           user = "slskd";
           group = "media";
           mode = "0775";
