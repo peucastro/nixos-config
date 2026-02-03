@@ -281,7 +281,6 @@ in {
 
     services.unbound = {
       enable = true;
-      checkconf = true;
       settings = {
         server = {
           # Network interface
@@ -340,6 +339,9 @@ in {
             ];
           }
         ];
+
+        # Remote Control
+        remote-control.control-enable = true;
       };
     };
 
