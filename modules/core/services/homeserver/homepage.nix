@@ -140,7 +140,7 @@ in {
                   description = serviceCfg.homepage.description;
                   href = "https://${serviceCfg.hostname}";
 
-                  siteMonitor = "https://${serviceCfg.hostname}";
+                  siteMonitor = "http://127.0.0.1:${toString serviceCfg.port}";
                   statusStyle = "dot";
                 }
                 // (lib.optionalAttrs hasWidget {

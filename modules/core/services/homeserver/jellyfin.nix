@@ -8,6 +8,12 @@ in {
   options.homeserver.services.jellyfin = {
     enable = lib.mkEnableOption "Jellyfin media server";
 
+    port = lib.mkOption {
+      type = lib.types.port;
+      default = 8096;
+      description = "The TCP port on which the Jellyfin will listen internally.";
+    };
+
     hostname = lib.mkOption {
       type = lib.types.str;
       default = "watch.${config.homeserver.baseDomain}";
@@ -62,13 +68,9 @@ in {
       };
     };
 
-    homeserver.services.backups.paths = [config.services.jellyfin.dataDir];
-
-    homeserver.caddy.vhosts = [
-      {
-        inherit (cfg) hostname;
-        port = 8096;
-      }
-    ];
+    homeserver = {
+      services.backups.paths = [config.services.jellyfin.dataDir];
+      caddy.vhosts = [{inherit (cfg) hostname port;}];
+    };
   };
 }
