@@ -80,17 +80,5 @@
         };
       };
     };
-
-    tunnels = {
-      enable = true;
-      tunnels = {
-        watch = {
-          credentialsFile = "/var/lib/cloudflared/watch.json";
-          ingress = {
-            "${config.homeserver.services.jellyfin.hostname}" = "http://localhost:8096";
-          };
-        };
-      };
-    };
   };
 }
