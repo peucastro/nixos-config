@@ -64,14 +64,12 @@
         enable = true;
         restic = {
           passwordFile = "/mnt/backups/restic-password";
-
           targets = {
             local = {
-              repository = "/mnt/backups";
+              repository = "/mnt/backups/restic";
               timer = "daily";
               healthchecksId = "6778ad5a-fced-4e9e-9248-583601971159";
             };
-
             remote = {
               repository = "s3:https://s3.eu-central-003.backblazeb2.com/kim-backups";
               environmentFile = config.age.secrets.backblaze-api-key.path;
@@ -80,6 +78,7 @@
             };
           };
         };
+        postgresql.location = "/mnt/backups/postgres";
       };
     };
   };

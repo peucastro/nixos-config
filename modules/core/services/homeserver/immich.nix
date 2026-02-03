@@ -59,7 +59,10 @@ in {
     };
 
     homeserver = {
-      services.backups.restic.paths = [config.services.immich.mediaLocation];
+      services.backups = {
+        restic.paths = [config.services.immich.mediaLocation];
+        postgresql.databases = ["immich"];
+      };
       caddy.vhosts = [{inherit (cfg) hostname port;}];
     };
   };
