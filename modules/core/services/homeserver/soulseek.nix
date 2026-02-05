@@ -60,10 +60,7 @@ in {
         };
         global.upload.slots = 1;
         groups.default.upload.slots = 1;
-        soulseek = {
-          distributed_network.enabled = false;
-          search.replies.enabled = false;
-        };
+        soulseek.distributed_network.enabled = true;
         directories = {
           downloads = "/data/downloads/soulseek";
           incomplete = "/data/downloads/soulseek/incomplete";
