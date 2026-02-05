@@ -86,6 +86,7 @@ A headless server running various self-hosted services like Jellyfin for media s
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/deluge.svg' width=32 height=32>|Deluge|BitTorrent client with web UI|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/qbittorrent.svg' width=32 height=32>|qBittorrent|Bittorrent client with web UI|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/soulseek.png' width=32 height=32>|Soulseek|Peer-to-peer music sharing|
+|<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/transmission.svg' width=32 height=32>|Transmission|BitTorrent client|
 
 ### Media
 

@@ -19,6 +19,7 @@
     ./soulseek.nix
     ./stirling-pdf.nix
     ./tailscale.nix
+    ./transmission.nix
     ./uptime-kuma.nix
   ];
 }

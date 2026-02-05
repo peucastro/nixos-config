@@ -56,8 +56,8 @@
       sonarr.enable = true;
 
       # Downloads
-      qbittorrent.enable = true;
       soulseek.enable = true;
+      transmission.enable = true;
 
       # Backups
       backups = {

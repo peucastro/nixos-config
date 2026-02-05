@@ -62,6 +62,10 @@
         hostname = "qbittorrent.${config.homeserver.baseDomain}";
       };
       soulseek.enable = true;
+      transmission = {
+        enable = true;
+        hostname = "transmission.${config.homeserver.baseDomain}";
+      };
 
       # Backups
       backups = {
