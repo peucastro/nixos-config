@@ -6,8 +6,8 @@
     pkgs.obs-studio
     pkgs.pavucontrol
     pkgs.vlc
-    pkgs.jellyfin
-    pkgs.supersonic
+    pkgs.jellyfin-desktop
+    pkgs.supersonic-wayland
     # pkgs.kdePackages.kdenlive
     pkgs.spotify
     pkgs.scrcpy
