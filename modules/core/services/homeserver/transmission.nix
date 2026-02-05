@@ -53,6 +53,9 @@ in {
         rpc-port = cfg.port;
         download-dir = "/data/downloads/torrent/complete";
         incomplete-dir = "/data/downloads/torrent/incomplete";
+
+        rpc-host-whitelist = "${cfg.hostname},127.0.0.1,localhost";
+        rpc-whitelist = "127.0.0.1,::1";
       };
     };
 
