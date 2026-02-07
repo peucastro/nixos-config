@@ -122,6 +122,7 @@ in {
           pkgs.vscode-extensions.bmewburn.vscode-intelephense-client
           pkgs.vscode-extensions.bradlc.vscode-tailwindcss
           pkgs.vscode-extensions.esbenp.prettier-vscode
+          pkgs.vscode-extensions.biomejs.biome
           pkgs.vscode-extensions.christian-kohler.path-intellisense
           pkgs.vscode-extensions.ritwickdey.liveserver
           pkgs.vscode-extensions.ms-vscode.live-server
@@ -129,9 +130,8 @@ in {
           pkgs.vscode-marketplace.laravel.vscode-laravel
         ];
         userSettings = {
-          "editor.defaultFormatter" = "esbenp.prettier-vscode";
           "svelte.enable-ts-plugin" = true;
-          "[astro]" = {"editor.defaultFormatter" = "esbenp.prettier-vscode";};
+          "[astro]" = {"editor.defaultFormatter" = "biomejs.biome";};
           "[php]" = {"editor.defaultFormatter" = "bmewburn.vscode-intelephense-client";};
         };
       };
