@@ -3,14 +3,16 @@
     enable = true;
     extensions = [
       "astro"
+      "biome"
+      "blade"
       "dart"
       "dockerfile"
+      "haskell"
       "latex"
       "make"
       "markdownlint"
       "material-icon-theme"
       "nix"
-      "perplexity"
       "php"
       "sql"
       "svelte"
