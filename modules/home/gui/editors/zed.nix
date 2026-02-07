@@ -18,14 +18,6 @@
     userSettings = {
       theme = "Gruvbox Dark Hard";
       icon_theme = "Material Icon Theme";
-      assistant = {
-        default_model = {
-          provider = "copilot_chat";
-          model = "gpt-4";
-        };
-        dock = "left";
-        version = "2";
-      };
       autosave = {
         after_delay = {
           milliseconds = 1000;
