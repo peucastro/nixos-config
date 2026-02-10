@@ -62,6 +62,7 @@ in {
         "firefox@tampermonkey.net" = "tampermonkey";
         "{c2c003ee-bd69-42a2-b0e9-6f34222cb046}" = "auto-tab-discard";
         "skipredirect@sblask" = "skip-redirect";
+        "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}" = "refined-github-";
       };
 
       # UI / defaults
