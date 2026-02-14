@@ -76,6 +76,8 @@ in {
         "browser.urlbar.trimURLs" = false;
         "browser.startup.homepage_override.mstone" = "ignore";
         "browser.shell.checkDefaultBrowser" = false;
+        "gfx.webrender.all" = true;
+        "widget.dmabuf.force-enabled" = true;
 
         # Search / address bar
         "browser.urlbar.suggest.searches" = false;
@@ -84,7 +86,6 @@ in {
         # Privacy / tracking
         "network.cookie.cookieBehavior" = 1;
         "dom.battery.enabled" = false;
-        "webgl.disabled" = true;
 
         # Referrer policy
         "network.http.referer.XOriginPolicy" = 2;
@@ -117,7 +118,7 @@ in {
         "zen.workspaces.continue-where-left-off" = true;
         "zen.workspaces.natural-scroll" = true;
         "zen.view.compact.hide-tabbar" = true;
-        "zen.view.compact.animate-sidebar" = false;
+        "zen.view.compact.animate-sidebar" = true;
         "zen.view.show-newtab-button-top" = false;
       };
 
