@@ -99,7 +99,7 @@
         else
           message=$(ssh "$SSH_TARGET" nixos-rebuild list-generations --json | yq -p=json ".[] | select(.current == true) | \"rebuild($FLAKE_HOST): generation \\(.generation), NixOS \\(.nixosVersion) with Linux Kernel \\(.kernelVersion)\"")
         fi
-        git commit -m "$message" || true
+        git commit --allow-empty -m "$message" || true
         git push
       }
 
