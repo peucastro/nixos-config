@@ -5,19 +5,16 @@
 }: let
   inherit (import ../desktop/colors.nix) colors;
 in {
-  imports = [inputs.zen-browser.homeModules.beta];
+  imports = [inputs.zen-browser.homeModules.twilight];
 
   programs.zen-browser = {
     enable = true;
+
+    # Browser policies
     policies = let
       mkLockedAttrs = builtins.mapAttrs (_: value: {
         Value = value;
         Status = "locked";
-      });
-
-      mkExtensionSettings = builtins.mapAttrs (_: pluginId: {
-        install_url = "https://addons.mozilla.org/firefox/downloads/latest/${pluginId}/latest.xpi";
-        installation_mode = "force_installed";
       });
     in {
       # Autofill / form behavior
@@ -53,23 +50,12 @@ in {
       # HTTPS
       HttpsOnlyMode = "force_enabled";
 
-      # Extensions
-      ExtensionSettings = mkExtensionSettings {
-        "uBlock0@raymondhill.net" = "ublock-origin";
-        "{446900e4-71c2-419f-a6a7-df9c091e268b}" = "bitwarden-password-manager";
-        "languagetool-webextension@languagetool.org" = "languagetool";
-        "{74145f27-f039-47ce-a470-a662b129930a}" = "clearurls";
-        "firefox@tampermonkey.net" = "tampermonkey";
-        "{c2c003ee-bd69-42a2-b0e9-6f34222cb046}" = "auto-tab-discard";
-        "skipredirect@sblask" = "skip-redirect";
-        "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}" = "refined-github-";
-      };
-
       # UI / defaults
       DontCheckDefaultBrowser = true;
       NoDefaultBookmarks = true;
       DisablePocket = true;
 
+      # Preferences
       Preferences = mkLockedAttrs {
         # General UI / usability
         "browser.tabs.warnOnClose" = false;
@@ -107,6 +93,7 @@ in {
       };
     };
 
+    # Default profile
     profiles."default" = {
       settings = {
         "zen.mods.auto-update" = false;
@@ -122,24 +109,15 @@ in {
         "zen.view.show-newtab-button-top" = false;
       };
 
-      spacesForce = true;
-      spaces = {
-        "Personal" = {
-          id = "c6de089c-410d-4206-961d-ab11f988d40a";
-          position = 1000;
-          icon = "👤";
-        };
-        "Work" = {
-          id = "cdd10fab-4fc5-494b-9041-325e5759195b";
-          position = 2000;
-          icon = "💼";
-        };
-        "College" = {
-          id = "cdd10fab-4fc5-494b-9041-325e5759195c";
-          position = 3000;
-          icon = "📚";
-        };
-      };
+      # Extensions via rycee’s firefox-addons
+      extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
+        ublock-origin
+        bitwarden
+        clearurls
+        auto-tab-discard
+        skip-redirect
+        refined-github
+      ];
 
       search = {
         force = true;
@@ -168,7 +146,7 @@ in {
               }
             ];
             icon = nixSnowflakeIcon;
-            definedAliases = ["np"];
+            definedAliases = ["@np"];
           };
           "Nix Options" = {
             urls = [
@@ -206,7 +184,7 @@ in {
               }
             ];
             icon = nixSnowflakeIcon;
-            definedAliases = ["hmop"];
+            definedAliases = ["@hmop"];
           };
         };
       };
