@@ -94,7 +94,7 @@ in {
     };
 
     # Default profile
-    profiles."default" = rec {
+    profiles."default" = {
       settings = {
         "zen.mods.auto-update" = false;
         "zen.widget.linux.transparency" = true;
@@ -118,47 +118,6 @@ in {
         skip-redirect
         refined-github
       ];
-
-      containersForce = true;
-      containers = {
-        Personal = {
-          color = "purple";
-          icon = "fingerprint";
-          id = 1;
-        };
-        Work = {
-          color = "blue";
-          icon = "briefcase";
-          id = 2;
-        };
-        College = {
-          color = "green";
-          icon = "circle";
-          id = 3;
-        };
-      };
-
-      spacesForce = true;
-      spaces = {
-        Personal = {
-          id = "11111111-1111-1111-1111-111111111111";
-          icon = "🫆";
-          container = containers.Personal.id;
-          position = 1000;
-        };
-        Work = {
-          id = "22222222-2222-2222-2222-222222222222";
-          icon = "💼";
-          container = containers.Work.id;
-          position = 2000;
-        };
-        College = {
-          id = "33333333-3333-3333-3333-333333333333";
-          icon = "⭕";
-          container = containers.College.id;
-          position = 3000;
-        };
-      };
 
       search = {
         force = true;
