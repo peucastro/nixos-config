@@ -94,7 +94,7 @@ in {
     };
 
     # Default profile
-    profiles."default" = {
+    profiles."default" = rec {
       settings = {
         "zen.mods.auto-update" = false;
         "zen.widget.linux.transparency" = true;
@@ -118,6 +118,47 @@ in {
         skip-redirect
         refined-github
       ];
+
+      containersForce = true;
+      containers = {
+        Personal = {
+          color = "purple";
+          icon = "fingerprint";
+          id = 1;
+        };
+        Work = {
+          color = "blue";
+          icon = "briefcase";
+          id = 2;
+        };
+        College = {
+          color = "green";
+          icon = "circle";
+          id = 3;
+        };
+      };
+
+      spacesForce = true;
+      spaces = {
+        Personal = {
+          id = "11111111-1111-1111-1111-111111111111";
+          icon = "🫆";
+          container = containers.Personal.id;
+          position = 1000;
+        };
+        Work = {
+          id = "22222222-2222-2222-2222-222222222222";
+          icon = "💼";
+          container = containers.Work.id;
+          position = 2000;
+        };
+        College = {
+          id = "33333333-3333-3333-3333-333333333333";
+          icon = "⭕";
+          container = containers.College.id;
+          position = 3000;
+        };
+      };
 
       search = {
         force = true;
@@ -192,8 +233,8 @@ in {
   };
 
   xdg.mimeApps.defaultApplications = {
-    "default-web-browser" = ["zen-beta.desktop"];
-    "x-scheme-handler/http" = ["zen-beta.desktop"];
-    "x-scheme-handler/https" = ["zen-beta.desktop"];
+    "default-web-browser" = ["zen-twilight.desktop"];
+    "x-scheme-handler/http" = ["zen-twilight.desktop"];
+    "x-scheme-handler/https" = ["zen-twilight.desktop"];
   };
 }

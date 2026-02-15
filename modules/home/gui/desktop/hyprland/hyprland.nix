@@ -9,7 +9,7 @@
       "$terminal" = "alacritty";
       "$fileManager" = "nautilus --new-window";
       "$menu" = "rofi -show drun";
-      "$browser" = "zen";
+      "$browser" = "zen-twilight";
 
       animations.enabled = false;
       decoration = {
