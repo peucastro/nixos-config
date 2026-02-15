@@ -206,7 +206,7 @@ in {
               }
             ];
             icon = nixSnowflakeIcon;
-            definedAliases = ["nop"];
+            definedAliases = ["@nop"];
           };
           "Home Manager Options" = {
             urls = [
