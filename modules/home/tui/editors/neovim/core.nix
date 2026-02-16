@@ -2,8 +2,6 @@
   programs.nvf = {
     enable = true;
     settings.vim = {
-      withNodeJs = true;
-      withPython3 = true;
       enableLuaLoader = true;
       searchCase = "smart";
       options = {

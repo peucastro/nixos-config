@@ -1,6 +1,7 @@
 {
   programs.nvf.settings.vim.git = {
     enable = true;
+    neogit.enable = true;
 
     gitsigns = {
       enable = true;
@@ -25,6 +26,7 @@
         toggleDeleted = "<leader>ghtd";
       };
     };
+
     git-conflict = {
       enable = true;
       mappings = {
@@ -36,8 +38,5 @@
         prevConflict = "<leader>gx]x";
       };
     };
-
-    neogit.enable = true;
-    vim-fugitive.enable = true;
   };
 }

@@ -6,7 +6,6 @@
         "<leader>f" = "Find";
         "<leader>g" = "Git";
         "<leader>gh" = "Gitsigns";
-        "<leader>h" = null;
         "<leader>gx" = "Git conflicts";
         "<leader>l" = "LSP";
       };
