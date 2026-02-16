@@ -4,14 +4,16 @@
       whichKey = {
         enable = true;
         register = {
-          "<leader>f" = "+Telescope";
-          "<leader>g" = "+Git";
+          "<leader>f" = "Telescope";
+          "<leader>g" = "Git";
           "<leader>gh" = "Hunk Actions";
           "<leader>h" = null;
           "<leader>gx" = "Conflicts";
-          "<leader>l" = "+LSP";
-          "<leader>w" = "+Windows";
-          "<leader>q" = "+Quit/Session";
+          "<leader>l" = "LSP";
+          "<leader>q" = "Quit/Session";
+          "<leader>t" = "NvimTree";
+          "<leader>w" = "Windows";
+          "<leader>x" = "Trouble";
         };
       };
       cheatsheet.enable = true;
