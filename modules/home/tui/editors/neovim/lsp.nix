@@ -5,7 +5,6 @@
     trouble.enable = true;
     lspsaga.enable = true;
     lspkind.enable = true;
-    lspSignature.enable = true;
     inlayHints.enable = true;
   };
 }
