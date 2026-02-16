@@ -5,11 +5,19 @@
       nvim_lsp = "[LSP]";
       path = "[Path]";
       buffer = "[Buffer]";
-      luasnip = "[LuaSnip]";
+      luasnip = "[Snip]";
       nvim_lua = "[Lua]";
-      treesitter = "[Treesitter]";
-      calc = "[Calc]";
-      emoji = "[Emoji]";
+      cmdline = "[Cmd]";
+      git = "[Git]";
+    };
+    mappings = {
+      complete = "<C-Space>";
+      next = "<C-n>";
+      previous = "<C-p>";
+      confirm = "<CR>";
+      close = "<C-e>";
+      scrollDocsUp = "<C-b>";
+      scrollDocsDown = "<C-f>";
     };
   };
 }
