@@ -2,9 +2,10 @@
   programs.nvf.settings.vim.lsp = {
     enable = true;
     formatOnSave = true;
-    lspkind.enable = true;
-    otter-nvim.enable = true;
+    lspconfig.enable = true;
     trouble.enable = true;
+    lspsaga.enable = true;
+    lspkind.enable = true;
     lspSignature.enable = true;
     inlayHints.enable = true;
   };
