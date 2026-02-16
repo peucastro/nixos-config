@@ -3,5 +3,6 @@
     nvim-web-devicons.enable = true;
     rainbow-delimiters.enable = true;
     indent-blankline.enable = true;
+    nvim-cursorline.enable = true;
   };
 }

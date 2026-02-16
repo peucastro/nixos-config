@@ -7,7 +7,6 @@
       enable = true;
       setupOpts = {
         numhl = true;
-        linehl = false;
         current_line_blame = true;
       };
       mappings = {
