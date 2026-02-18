@@ -33,7 +33,7 @@ jobs:
           token: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
       - name: Install Statix
-        run: nix profile install github:nerdypepper/statix
+        run: nix profile add github:nerdypepper/statix
 
       - name: Run Statix Lint
         run: statix check .
