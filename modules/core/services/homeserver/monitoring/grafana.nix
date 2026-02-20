@@ -49,7 +49,10 @@ in {
   config = lib.mkIf cfg.enable {
     services.grafana = {
       enable = true;
-      settings.server.http_port = cfg.port;
+      settings = {
+        server.http_port = cfg.port;
+        security.secret_key = "SW2YcwTIb9zpOOhoPsMm";
+      };
       provision = {
         enable = true;
         datasources.settings = {
