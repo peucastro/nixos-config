@@ -117,6 +117,7 @@ in {
         auto-tab-discard
         skip-redirect
         refined-github
+        youtube-shorts-block
       ];
 
       search = {
