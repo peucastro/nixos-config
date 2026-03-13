@@ -49,7 +49,10 @@
     "terminal.integrated.fontSize" = 15;
     "extensions.autoUpdate" = false;
     "extensions.ignoreRecommendations" = true;
-    "github.copilot.enable" = {"*" = false;};
+    "github.copilot" = {
+      "enable" = {"*" = false;};
+      "nextEditSuggestions.enabled" = false;
+    };
     "git.autofetch" = true;
     "git.blame.statusBarItem.enabled" = false;
     "git.openRepositoryInParentFolders" = "always";
