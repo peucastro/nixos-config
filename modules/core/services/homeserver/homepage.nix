@@ -50,7 +50,7 @@ in {
     services.homepage-dashboard = {
       enable = true;
       listenPort = cfg.port;
-      environmentFile = config.age.secrets.homepage-env.path;
+      environmentFiles = [config.age.secrets.homepage-env.path];
       settings = {
         title = "Home server";
         description = "My Personal Home server";
