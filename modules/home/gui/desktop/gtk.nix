@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   fonts.fontconfig.enable = true;
   home.packages = [
     pkgs.dconf
@@ -46,14 +50,17 @@
       gtk-menu-images = true;
       gtk-decoration-layout = "appmenu:none";
     };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-      gtk-theme-name = "Adwaita-dark";
-      gtk-icon-theme-name = "Adwaita";
-      gtk-font-name = "Inter 12";
-      gtk-cursor-theme-name = "Adwaita";
-      gtk-cursor-theme-size = 24;
-      gtk-decoration-layout = "appmenu:none";
+    gtk4 = {
+      theme = config.gtk.theme;
+      extraConfig = {
+        gtk-application-prefer-dark-theme = true;
+        gtk-theme-name = "Adwaita-dark";
+        gtk-icon-theme-name = "Adwaita";
+        gtk-font-name = "Inter 12";
+        gtk-cursor-theme-name = "Adwaita";
+        gtk-cursor-theme-size = 24;
+        gtk-decoration-layout = "appmenu:none";
+      };
     };
   };
 
