@@ -41,7 +41,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    services.jellyseerr = {
+    services.seerr = {
       enable = true;
       inherit (cfg) port;
     };
