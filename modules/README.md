@@ -6,12 +6,16 @@ This directory contains modular NixOS and Home Manager configuration files, orga
 
 ### Core (`core/`)
 
-NixOS system-level configuration modules:w
+NixOS system-level configuration modules:
 
 - `base/` - Essential system settings such as user management, security, networking, and package manager configuration
+- `desktop/` - Desktop environment and display manager configuration
+- `gaming/` - Gaming configuration, such as Steam, GameMode, Proton, etc.
 - `hardware/` - Hardware-specific configuration, including audio, Bluetooth, and keyboard layout
+- `server/` - Home server configuration and services
 - `services/` - System services like login managers, printing, power profiles, and backup solutions
 - `system/` - High-level system configuration, including bootloader setup, environment variables, locale, and MIME types
+- `virtualisation/` - Virtualization tools like Docker and Podman
 
 ### Home (`home/`)
 

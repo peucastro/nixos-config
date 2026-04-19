@@ -3,6 +3,7 @@
 This directory contains the main NixOS configuration modules for your system, organized for clarity and modularity:
 
 - `base/` - Handles essential system settings such as user management, security, networking, and package manager configuration.
+- `desktop/` - Desktop environment and display manager configuration.
 - `gaming/` - Manages gaming configuration, such as steam, `gamemode`, proton, etc.
 - `hardware/` - Manages hardware-specific configuration, including audio, Bluetooth, and keyboard layout.
 - `services/` - Configures system services like login managers, printing, power profiles, and backup solutions.

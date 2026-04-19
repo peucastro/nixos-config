@@ -7,6 +7,8 @@ This directory contains all host-specific configurations for my NixOS systems. E
 | Host      | Platform | Hardware                 | Purpose                     | Status      |
 | --------- | -------- | ------------------------ | --------------------------- | ----------- |
 | `yoga`    | NixOS    | Lenovo Yoga Pro 7 14ASP9 | College, Work and Daily Use | ✅ Active   |
+| `kim`     | NixOS    | Generic Server           | Home server                 | ✅ Active   |
+| `khloe`   | NixOS    | Virtual Machine          | Deployment Testing          | ✅ Active   |
 | `ideapad` | NixOS    | Lenovo Ideapad 5 14ALC05 | College and Daily Use       | ⚪ Not Used |
 
 ## How to Add a New Host

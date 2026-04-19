@@ -17,6 +17,8 @@ My NixOS setup running on a couple of laptops and a home server. Everything is m
 ├── flake.nix       # Main flake configuration
 ├── hosts/          # Per-host configurations
 │   ├── ideapad/
+│   ├── khloe/
+│   ├── kim/
 │   └── yoga/
 ├── modules/        # Modular configurations
 │   ├── core/       # NixOS modules
