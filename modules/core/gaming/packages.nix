@@ -6,7 +6,7 @@
   environment.systemPackages = [
     pkgs.protonup-qt
     pkgs.mangohud
-    pkgs.lutris
+    pkgs.lutris-unwrapped
     pkgs.heroic
   ];
 
