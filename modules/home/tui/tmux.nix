@@ -15,6 +15,7 @@
 
       unbind C-b
       bind-key C-a send-prefix
+      set -g extended-keys on
 
       bind : command-prompt
 
