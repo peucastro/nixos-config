@@ -45,7 +45,6 @@
       show_completions_on_input = false;
       show_edit_predictions = false;
       tabs = {
-        show_close_button = "always";
         file_icons = true;
         git_status = true;
       };
@@ -54,15 +53,9 @@
         diagnostics = false;
       };
       terminal = {
-        toolbar = {
-          breadcrumbs = false;
-        };
         font_family = "FiraCode Nerd Font Mono";
-        font_size = 15;
-        line_height = "standard";
-        working_directory = "first_project_directory";
+        font_size = 14;
       };
-      ui_font_size = 16;
     };
   };
 }
