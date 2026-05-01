@@ -56,6 +56,7 @@
         font_family = "FiraCode Nerd Font Mono";
         font_size = 14;
       };
+      vim_mode = true;
     };
   };
 }
