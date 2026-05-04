@@ -59,14 +59,6 @@
       soulseek.enable = true;
       transmission.enable = true;
 
-      # Runner
-      gitlab-runner = {
-        enable = true;
-        gitlabUrl = "https://gitlab.up.pt/";
-        authenticationTokenFile = "/home/homeserver/.gitlab-auth";
-        runUntagged = true;
-      };
-
       # Backups
       backups = {
         enable = true;

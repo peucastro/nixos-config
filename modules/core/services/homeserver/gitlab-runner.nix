@@ -53,7 +53,6 @@ in {
 
       services = {
         runner = {
-          enable = true;
           executor = "shell";
           runUntagged = cfg.runUntagged;
           tagList = cfg.tagList;
