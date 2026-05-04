@@ -28,19 +28,19 @@
       file = "${secrets}/radarr-api-key.age";
       mode = "0400";
       owner = config.services.radarr.user;
-      group = config.services.radarr.group;
+      inherit (config.services.radarr) group;
     };
     sonarr-api-key = {
       file = "${secrets}/sonarr-api-key.age";
       mode = "0400";
       owner = config.services.sonarr.user;
-      group = config.services.sonarr.group;
+      inherit (config.services.sonarr) group;
     };
     lidarr-api-key = {
       file = "${secrets}/lidarr-api-key.age";
       mode = "0400";
       owner = config.services.lidarr.user;
-      group = config.services.lidarr.group;
+      inherit (config.services.lidarr) group;
     };
     prowlarr-api-key = {
       file = "${secrets}/prowlarr-api-key.age";
@@ -52,7 +52,7 @@
       file = "${secrets}/soulseek-env.age";
       mode = "0400";
       owner = config.services.slskd.user;
-      group = config.services.slskd.group;
+      inherit (config.services.slskd) group;
     };
     miniflux-env = {
       file = "${secrets}/miniflux-env.age";
@@ -70,7 +70,7 @@
       file = "${secrets}/healthchecks-api-key.age";
       mode = "0400";
       owner = config.services.healthchecks.user;
-      group = config.services.healthchecks.group;
+      inherit (config.services.healthchecks) group;
     };
   };
 }

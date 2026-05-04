@@ -8,7 +8,7 @@ with builtins.getFlake (toString ../.); let
     (builtins.filter (x: x != "enable") (builtins.attrNames hs.services));
 
   servicesByCategory =
-    lib.lists.groupBy (
+    builtins.groupBy (
       x: hs.services.${x}.homepage.category
     )
     enabledHomepageServices;

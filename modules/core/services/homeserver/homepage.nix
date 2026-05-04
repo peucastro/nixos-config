@@ -136,15 +136,15 @@ in {
             in {
               "${serviceCfg.homepage.name}" =
                 {
-                  icon = serviceCfg.homepage.icon;
-                  description = serviceCfg.homepage.description;
+                  inherit (serviceCfg.homepage) icon;
+                  inherit (serviceCfg.homepage) description;
                   href = "https://${serviceCfg.hostname}";
 
                   siteMonitor = "http://127.0.0.1:${toString serviceCfg.port}";
                   statusStyle = "dot";
                 }
                 // (lib.optionalAttrs hasWidget {
-                  widget = serviceCfg.homepage.widget;
+                  inherit (serviceCfg.homepage) widget;
                 });
             });
         });

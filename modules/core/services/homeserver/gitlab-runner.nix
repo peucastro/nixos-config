@@ -48,14 +48,14 @@ in {
   config = lib.mkIf cfg.enable {
     services.gitlab-runner = {
       enable = true;
-      concurrent = cfg.concurrent;
-      extraPackages = cfg.extraPackages;
+      inherit (cfg) concurrent;
+      inherit (cfg) extraPackages;
 
       services = {
         runner = {
           executor = "shell";
-          runUntagged = cfg.runUntagged;
-          tagList = cfg.tagList;
+          inherit (cfg) runUntagged;
+          inherit (cfg) tagList;
           authenticationTokenConfigFile = pkgs.writeText "gitlab-runner-auth.toml" ''
             url = "${cfg.gitlabUrl}"
             authentication_token = <<EOF

@@ -65,8 +65,8 @@ in {
         restic = {
           enable = true;
           port = 9753;
-          passwordFile = config.homeserver.services.backups.restic.passwordFile;
-          repository = config.homeserver.services.backups.restic.targets.local.repository;
+          inherit (config.homeserver.services.backups.restic) passwordFile;
+          inherit (config.homeserver.services.backups.restic.targets.local) repository;
           refreshInterval = 43200;
           user = "root";
           group = "root";
