@@ -8,6 +8,7 @@
     ./calibre-web.nix
     ./deluge.nix
     ./filebrowser.nix
+    ./gitlab-runner.nix
     ./glances.nix
     ./homepage.nix
     ./immich.nix
