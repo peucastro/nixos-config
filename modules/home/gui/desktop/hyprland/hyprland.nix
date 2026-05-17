@@ -20,11 +20,6 @@
         shadow.enabled = false;
       };
 
-      dwindle = {
-        pseudotile = true;
-        force_split = 2;
-      };
-
       master = {
         new_status = "master";
         new_on_top = 1;
