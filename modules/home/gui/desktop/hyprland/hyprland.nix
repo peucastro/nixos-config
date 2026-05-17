@@ -4,6 +4,7 @@
     package = null;
     portalPackage = null;
     xwayland.enable = true;
+    configType = "hyprlang";
     settings = {
       "$modifier" = "SUPER";
       "$terminal" = "alacritty";
