@@ -15,7 +15,7 @@
       "$modifier, Q, killactive,"
       "$modifier, V, togglefloating,"
       "$modifier, U, pseudo,"
-      "$modifier, I, togglesplit,"
+      "$modifier, I, layoutmsg, togglesplit"
 
       "$modifier, X, exec, loginctl lock-session"
       "$modifier SHIFT, X, exit,"
