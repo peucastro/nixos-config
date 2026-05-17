@@ -4,6 +4,7 @@
     package = null;
     portalPackage = null;
     xwayland.enable = true;
+    configType = "hyprlang";
     settings = {
       "$modifier" = "SUPER";
       "$terminal" = "alacritty";
@@ -17,11 +18,6 @@
         rounding_power = 6;
         blur.enabled = false;
         shadow.enabled = false;
-      };
-
-      dwindle = {
-        pseudotile = true;
-        force_split = 2;
       };
 
       master = {
