@@ -156,6 +156,7 @@
       deploy.nodes.kim = {
         hostname = "192.168.1.100";
         sshUser = "homeserver";
+        remoteBuild = false;
 
         profiles.system = {
           user = "root";
