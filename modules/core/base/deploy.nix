@@ -10,7 +10,7 @@
   deploy = pkgs.writeShellApplication {
     inherit name;
     meta = {
-      description = "Deplout NixOS system with Git synchronization";
+      description = "Deploy NixOS system with Git synchronization";
       license = pkgs.lib.licenses.mit;
     };
 
@@ -44,7 +44,7 @@
               echo
               echo "Options:"
               echo "  -h, --help     Show this help message and exit."
-              echo "  -f, --force    Force reploy, even if there are no changes to commit."
+              echo "  -f, --force    Force redeploy, even if there are no changes to commit."
               echo
               echo "Arguments:"
               echo "  FLAKE_HOST     Flake hostname (e.g., kim)"

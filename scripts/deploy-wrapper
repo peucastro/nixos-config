@@ -1,0 +1,137 @@
+#!/usr/bin/env bash
+
+set -e
+
+name="deploy"
+version="1.0.0"
+pname="peucastro-nixos-config-${name}"
+
+parse_options() {
+	opts="$(getopt -n ${name} -o hf -l help,force -- "$@")"
+	eval set -- "$opts"
+	REBUILD_FORCE=false
+	FLAKE_HOST=""
+	while true; do
+		case "$1" in
+		-h | --help)
+			echo "Usage: ${name} [OPTIONS] [FLAKE_HOST]"
+			echo
+			echo "Deploying NixOS system using deploy-rs."
+			echo
+			echo "Options:"
+			echo "  -h, --help     Show this help message and exit."
+			echo "  -f, --force    Force deploy, even if there are no changes to commit."
+			echo
+			echo "Arguments:"
+			echo "  FLAKE_HOST     Flake hostname (e.g., kim). Defaults to local system."
+			echo
+			echo "Examples:"
+			echo "  ${name}                                          # Local deploy (not supported with deploy-rs)"
+			echo "  ${name} kim                                      # Remote deploy to kim"
+			echo
+			exit 0
+			;;
+		-f | --force)
+			shift
+			REBUILD_FORCE=true
+			;;
+		--)
+			shift
+			FLAKE_HOST="${1:-}"
+			break
+			;;
+		*)
+			echo "Invalid option: $1"
+			exit 1
+			;;
+		esac
+	done
+}
+
+format_files() {
+	nix fmt . &>/dev/null || nix fmt .
+	git add .
+}
+
+should_rebuild() {
+	if [ "$REBUILD_FORCE" == "true" ]; then
+		return 0
+	fi
+	if git diff --staged --quiet; then
+		echo "No new changes detected, exiting."
+		echo
+		return 1
+	fi
+	return 0
+}
+
+get_ssh_target() {
+	local node="$1"
+	local hostname ssh_user
+	hostname=$(nix eval --raw ".#deploy.nodes.${node}.hostname" 2>/dev/null)
+	ssh_user=$(nix eval --raw ".#deploy.nodes.${node}.sshUser" 2>/dev/null)
+	echo "${ssh_user}@${hostname}"
+}
+
+get_generation_info() {
+	local host="$1"
+	local ssh_target
+	ssh_target=$(get_ssh_target "$host")
+	ssh "$ssh_target" "nixos-rebuild list-generations --json" 2>/dev/null | nix run nixpkgs#jq -- ".[] | select(.current == true) | \"rebuild(${host}): generation \\(.generation), NixOS \\(.nixosVersion) with Linux Kernel \\(.kernelVersion)\"" 2>/dev/null || echo "rebuild(${host}): remote deployment"
+}
+
+commit_and_push() {
+	local host="$1"
+	local message
+	message=$(get_generation_info "$host")
+	git commit --allow-empty -m "$message" || true
+	git push
+}
+
+notify_success() {
+	if command -v notify-send &>/dev/null; then
+		notify-send -e "NixOS successfully deployed!" --icon=software-update-available
+	fi
+}
+
+notify_failure() {
+	if command -v notify-send &>/dev/null; then
+		notify-send -e "NixOS deploy failed!" --icon=dialog-error
+	fi
+}
+
+parse_options "$@"
+
+if [ -z "$FLAKE_HOST" ]; then
+	echo "Error: FLAKE_HOST is required for deploy-rs."
+	echo "Usage: $name <FLAKE_HOST>"
+	echo "Example: $name kim"
+	exit 1
+fi
+
+pushd ~/nixos-config >/dev/null
+
+git stash
+git pull --rebase
+git stash pop || true
+
+format_files
+if ! should_rebuild; then
+	popd >/dev/null
+	exit 0
+fi
+
+echo "Deploying NixOS system '${FLAKE_HOST}' via deploy-rs..."
+
+if deploy --interactive-sudo false .#${FLAKE_HOST}; then
+	echo "NixOS deploy successful, committing changes to git..."
+	commit_and_push "$FLAKE_HOST"
+	notify_success
+else
+	echo "NixOS deploy failed, not committing changes."
+	notify_failure
+	popd >/dev/null
+	exit 1
+fi
+
+popd >/dev/null
