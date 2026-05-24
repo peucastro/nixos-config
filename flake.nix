@@ -65,6 +65,12 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "utils";
+    };
   };
 
   outputs = {
@@ -75,6 +81,7 @@
     agenix,
     home-manager,
     nvf,
+    deploy-rs,
     ...
   } @ inputs: let
     defaultUser = {
@@ -123,7 +130,7 @@
         formatter = pkgs.alejandra;
         devShells = import ./shell.nix {
           inherit pkgs system;
-          inherit (inputs) agenix;
+          inherit (inputs) agenix deploy-rs;
         };
       }
     )
@@ -145,5 +152,17 @@
           extraModules = [disko.nixosModules.disko];
         };
       };
+
+      deploy.nodes.kim = {
+        hostname = "192.168.1.100";
+        sshUser = "homeserver";
+
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.kim;
+        };
+      };
+
+      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     };
 }
