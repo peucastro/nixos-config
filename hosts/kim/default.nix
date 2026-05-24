@@ -10,6 +10,7 @@
 
   networking = {
     hostName = "kim";
+    domain = "local";
     defaultGateway = "192.168.1.1";
     interfaces.enp2s0.ipv4.addresses = [
       {
