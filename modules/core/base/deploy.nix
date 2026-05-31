@@ -30,7 +30,7 @@
       HOST="$(hostname)"
 
       parse_options() {
-        opts="$(getopt -n ${name} -o h -l help -o f -l force -- "$@")"
+        opts="$(getopt -n ${name} -o hf -l help,force -- "$@")"
         eval set -- "$opts"
         REBUILD_FORCE=false
         FLAKE_HOST=""
