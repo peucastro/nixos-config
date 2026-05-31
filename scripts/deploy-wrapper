@@ -54,10 +54,13 @@ format_files() {
 }
 
 should_rebuild() {
+	local host="$1"
+	last_built_commit=$(git rev-parse --verify --quiet "${host}^{}" || echo "<not-found>")
+	current_commit=$(git rev-parse HEAD)
 	if [ "$REBUILD_FORCE" == "true" ]; then
 		return 0
 	fi
-	if git diff --staged --quiet; then
+	if [ "$last_built_commit" == "$current_commit" ] && git diff --staged --quiet; then
 		echo "No new changes detected, exiting."
 		echo
 		return 1
@@ -85,7 +88,9 @@ commit_and_push() {
 	local message
 	message=$(get_generation_info "$host")
 	git commit --allow-empty -m "$message" || true
+	git tag -f "$host" HEAD
 	git push
+	git push --tags --force
 }
 
 notify_success() {
@@ -116,7 +121,7 @@ git pull --rebase
 git stash pop || true
 
 format_files
-if ! should_rebuild; then
+if ! should_rebuild "$FLAKE_HOST"; then
 	popd >/dev/null
 	exit 0
 fi
