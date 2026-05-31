@@ -90,13 +90,13 @@ commit_and_push() {
 
 notify_success() {
 	if command -v notify-send &>/dev/null; then
-		notify-send -e "NixOS successfully deployed!" --icon=software-update-available
+		notify-send -t 5000 -e "NixOS successfully deployed!" --icon=software-update-available
 	fi
 }
 
 notify_failure() {
 	if command -v notify-send &>/dev/null; then
-		notify-send -e "NixOS deploy failed!" --icon=dialog-error
+		notify-send -t 5000 -e "NixOS deploy failed!" --icon=dialog-error
 	fi
 }
 
