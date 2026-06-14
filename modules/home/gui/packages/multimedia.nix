@@ -11,6 +11,5 @@
     # pkgs.kdePackages.kdenlive
     pkgs.spotify
     pkgs.scrcpy
-    pkgs.zoom
   ];
 }
