@@ -3,12 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    systems.url = "github:nix-systems/default";
-    utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
-    };
+    utils.url = "github:numtide/flake-utils";
 
     disko = {
       url = "github:nix-community/disko";
@@ -24,7 +19,6 @@
       url = "github:ryantm/agenix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
         home-manager.follows = "home-manager";
       };
     };
@@ -49,15 +43,6 @@
 
     nvf = {
       url = "github:notashelf/nvf";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        ndg.follows = "ndg";
-      };
-    };
-
-    ndg = {
-      url = "github:feel-co/ndg";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

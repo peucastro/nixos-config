@@ -29,10 +29,6 @@
       name = "Adwaita-dark";
       package = pkgs.gnome-themes-extra;
     };
-    iconTheme = {
-      name = "Adwaita";
-      package = pkgs.gnome-icon-theme;
-    };
     cursorTheme = {
       name = "Adwaita";
       package = pkgs.gnome-themes-extra;

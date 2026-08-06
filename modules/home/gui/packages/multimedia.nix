@@ -7,10 +7,9 @@
     pkgs.pavucontrol
     pkgs.vlc
     pkgs.jellyfin-desktop
-    pkgs.supersonic-wayland
+    pkgs.supersonic
     # pkgs.kdePackages.kdenlive
     pkgs.spotify
     pkgs.scrcpy
-    pkgs.zoom
   ];
 }
