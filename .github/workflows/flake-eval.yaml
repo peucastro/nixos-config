@@ -33,7 +33,7 @@ jobs:
         uses: DeterminateSystems/magic-nix-cache-action@v14
 
       - name: Check Nixpkgs Inputs
-        uses: DeterminateSystems/flake-checker-action@v12
+        uses: DeterminateSystems/flake-checker-action@v13
 
       - name: Check the flake
         run: nix flake check --show-trace
