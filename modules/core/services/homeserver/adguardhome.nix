@@ -57,7 +57,7 @@ in {
             port = 6060;
             enabled = false;
           };
-          address = "0.0.0.0:${cfg.port}";
+          address = "0.0.0.0:${toString cfg.port}";
           session_ttl = "720h";
         };
         users = [];
