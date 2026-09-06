@@ -1,6 +1,6 @@
 {
   programs.nvf.settings.vim.statusline.lualine = {
     enable = true;
-    theme = "gruvbox_dark";
+    setupOpts.options.theme = "gruvbox_dark";
   };
 }
