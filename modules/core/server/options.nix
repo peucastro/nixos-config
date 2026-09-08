@@ -2,7 +2,7 @@
   options.homeserver = {
     baseDomain = lib.mkOption {
       type = lib.types.str;
-      default = "peucastro.me";
+      default = "peucastro.com";
     };
 
     timeZone = lib.mkOption {
