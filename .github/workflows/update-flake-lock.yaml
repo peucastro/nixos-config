@@ -25,7 +25,7 @@ jobs:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
       - name: Install Determinate Nix
-        uses: DeterminateSystems/determinate-nix-action@v3
+        uses: DeterminateSystems/determinate-nix-action@v3.21.8
 
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@v28
