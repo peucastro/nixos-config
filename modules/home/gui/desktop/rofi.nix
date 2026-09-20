@@ -10,17 +10,17 @@ in
   in {
     programs.rofi = {
       enable = true;
-      cycle = true;
       plugins = [pkgs.rofi-emoji];
-      modes = ["drun" "emoji"];
-      terminal = "${pkgs.alacritty}/bin/alacritty";
 
-      extraConfig = {
+      settings = {
+        cycle = true;
+        modes = ["drun" "emoji"];
+        terminal = "${pkgs.alacritty}/bin/alacritty";
+        font = "Inter 12";
         show-icons = true;
         icon-theme = "Adwaita";
       };
 
-      font = "Inter 12";
       theme = {
         "*" = {
           bg0 = mkLiteral "#${colors.background-dim}";
