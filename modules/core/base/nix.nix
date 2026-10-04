@@ -3,6 +3,7 @@
     settings = {
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
+      nix-path = ["nixpkgs=${inputs.nixpkgs}"];
     };
 
     gc = {
@@ -10,7 +11,5 @@
       dates = "monthly";
       options = "-d";
     };
-
-    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   };
 }
