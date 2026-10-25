@@ -49,7 +49,6 @@ in {
   config = lib.mkIf cfg.enable {
     services.adguardhome = {
       enable = true;
-      inherit (cfg) port;
       mutableSettings = false;
       settings = {
         http = {
