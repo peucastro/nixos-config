@@ -43,7 +43,7 @@ in {
   config = lib.mkIf cfg.enable {
     services.bazarr = {
       enable = true;
-      listenPort = cfg.port;
+      settings.general.port = cfg.port;
       group = "media";
     };
 

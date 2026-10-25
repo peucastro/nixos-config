@@ -47,6 +47,7 @@ in {
       settings = {
         Port = cfg.port;
         MusicFolder = "/data/media/music";
+        Plugins.Enabled = false;
       };
     };
 
