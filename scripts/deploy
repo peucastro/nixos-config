@@ -76,18 +76,31 @@ get_ssh_target() {
 	echo "${ssh_user}@${hostname}"
 }
 
-get_generation_info() {
+get_generation_json() {
 	local host="$1"
 	local ssh_target
 	ssh_target=$(get_ssh_target "$host")
-	ssh "$ssh_target" "nixos-rebuild list-generations --json" 2>/dev/null | nix run nixpkgs#jq -- ".[] | select(.current == true) | \"rebuild(${host}): generation \\(.generation), NixOS \\(.nixosVersion) with Linux Kernel \\(.kernelVersion)\"" 2>/dev/null || echo "rebuild(${host}): remote deployment"
+	ssh "$ssh_target" "nixos-rebuild list-generations --json"
+}
+
+get_generation_number() {
+	local host="$1"
+	local generation
+	generation=$(get_generation_json "$host" | nix run nixpkgs#jq -- -r '.[] | select(.current == true) | .generation')
+	[ -n "$generation" ] || return 1
+	echo "$generation"
+}
+
+get_generation_info() {
+	local host="$1"
+	get_generation_json "$host" | nix run nixpkgs#jq -- -r --arg host "$host" \
+		'.[] | select(.current == true) | "rebuild(\($host)): generation \(.generation), NixOS \(.nixosVersion) with Linux Kernel \(.kernelVersion)"'
 }
 
 commit_and_push() {
 	local host="$1"
-	local message
-	message=$(get_generation_info "$host")
-	git commit --allow-empty -m "$message" || true
+	local message="$2"
+	git commit --allow-empty -m "$message"
 	git tag -f "$host" HEAD
 	git push
 	git push --tags --force
@@ -116,9 +129,18 @@ fi
 
 pushd ~/nixos-config >/dev/null
 
-git stash
+STASHED=false
+if ! git diff --quiet || ! git diff --cached --quiet; then
+	git stash push -m "deploy autostash"
+	STASHED=true
+fi
 git pull --rebase
-git stash pop || true
+if [ "$STASHED" = true ]; then
+	git stash pop || {
+		echo "Error: failed to restore stashed changes; resolve them manually." >&2
+		exit 1
+	}
+fi
 
 format_files
 if ! should_rebuild "$FLAKE_HOST"; then
@@ -128,9 +150,21 @@ fi
 
 echo "Deploying NixOS system '${FLAKE_HOST}' via deploy-rs..."
 
+previous_generation=$(get_generation_number "$FLAKE_HOST") || previous_generation=""
+
 if deploy --interactive-sudo false .#${FLAKE_HOST}; then
+	new_generation=$(get_generation_number "$FLAKE_HOST") || new_generation=""
+
+	if [ -z "$new_generation" ]; then
+		message="deploy(${FLAKE_HOST}): generation unknown"
+	elif [ "$new_generation" = "$previous_generation" ]; then
+		message="deploy(${FLAKE_HOST}): no new generation (still ${new_generation})"
+	else
+		message=$(get_generation_info "$FLAKE_HOST")
+	fi
+
 	echo "NixOS deploy successful, committing changes to git..."
-	commit_and_push "$FLAKE_HOST"
+	commit_and_push "$FLAKE_HOST" "$message"
 	notify_success
 else
 	echo "NixOS deploy failed, not committing changes."
