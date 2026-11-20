@@ -79,7 +79,7 @@ My NixOS setup running on a couple of laptops and a home server. Everything is m
 
 A headless server running various self-hosted services like Jellyfin for media streaming, Immich for photos, and the *arr stack for managing downloads. Everything is connected through Tailscale for remote access, with AdGuard Home handling DNS filtering. Services are configured declaratively through NixOS with Caddy reverse proxy handling SSL certificates via Cloudflare DNS.
 
-> This section is generated automatically from the Nix configuration using [this cursed Nix script](https://github.com/peucastro/nixos-config/blob/main/scripts/generate-services-table.nix).
+> This section is generated automatically from the Nix configuration using [this cursed Nix package](https://github.com/peucastro/nixos-config/blob/main/packages/generate-services-table/package.nix).
 
 ### Downloads
 
@@ -88,7 +88,7 @@ A headless server running various self-hosted services like Jellyfin for media s
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/deluge.svg' width=32 height=32>|Deluge|BitTorrent client with web UI|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/qbittorrent.svg' width=32 height=32>|qBittorrent|Bittorrent client with web UI|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/soulseek.png' width=32 height=32>|Soulseek|Peer-to-peer music sharing|
-|<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/transmission.svg' width=32 height=32>|Transmission|BitTorrent client|
+|<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/transmission.svg' width=32 height=32>|Transmission|Bittorrent client with web UI|
 
 ### Media
 
