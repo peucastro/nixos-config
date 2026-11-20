@@ -8,7 +8,6 @@
     pkgs.vlc
     pkgs.jellyfin-desktop
     pkgs.supersonic
-    # pkgs.kdePackages.kdenlive
     pkgs.spotify
     pkgs.scrcpy
   ];
