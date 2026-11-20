@@ -120,8 +120,18 @@
     utils.lib.eachDefaultSystem (
       system: let
         pkgs = import nixpkgs {inherit system;};
+        deploy = pkgs.callPackage ./packages/deploy/package.nix {
+          deploy-rs = inputs.deploy-rs.packages.${system}.default;
+        };
       in {
         formatter = pkgs.alejandra;
+        packages = {
+          deploy-cli = deploy;
+          default = deploy;
+          generate-services-table = pkgs.callPackage ./packages/generate-services-table/package.nix {
+            inherit self;
+          };
+        };
         devShells = import ./shell.nix {
           inherit pkgs system;
           inherit (inputs) agenix deploy-rs;

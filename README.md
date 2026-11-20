@@ -79,7 +79,7 @@ My NixOS setup running on a couple of laptops and a home server. Everything is m
 
 A headless server running various self-hosted services like Jellyfin for media streaming, Immich for photos, and the *arr stack for managing downloads. Everything is connected through Tailscale for remote access, with AdGuard Home handling DNS filtering. Services are configured declaratively through NixOS with Caddy reverse proxy handling SSL certificates via Cloudflare DNS.
 
-> This section is generated automatically from the Nix configuration using [this cursed Nix script](https://github.com/peucastro/nixos-config/blob/main/scripts/generate-services-table.nix).
+> This section is generated automatically from the Nix configuration using [this cursed Nix package](https://github.com/peucastro/nixos-config/blob/main/packages/generate-services-table/package.nix).
 
 ### Downloads
 

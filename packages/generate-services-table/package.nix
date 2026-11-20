@@ -1,7 +1,10 @@
-with builtins.getFlake (toString ../.); let
-  lib = import <nixpkgs/lib>;
+{
+  lib,
+  self,
+  writeText,
+}: let
   hostname = "khloe";
-  hs = nixosConfigurations.${hostname}.config.homeserver;
+  hs = self.nixosConfigurations.${hostname}.config.homeserver;
   enabledHomepageServices =
     builtins.filter
     (x: hs.services.${x}.enable or false && (hs.services.${x} ? homepage))
@@ -38,4 +41,4 @@ with builtins.getFlake (toString ../.); let
     )
     categories;
 in
-  lib.strings.concatLines (builtins.filter (x: x != "") tables)
+  writeText "services-table.md" (lib.strings.concatLines (builtins.filter (x: x != "") tables))
