@@ -90,17 +90,31 @@
       initialPassword = "nixos";
     };
 
+    overlays = {
+      default = final: prev: {
+        deploy-cli = prev.callPackage ./packages/deploy/package.nix {
+          deploy-rs = inputs.deploy-rs.packages.${prev.stdenv.hostPlatform.system}.default;
+        };
+      };
+    };
+
+    pkgsFor = system:
+      import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [
+          overlays.default
+          inputs.nix-vscode-extensions.overlays.default
+        ];
+      };
+
     mkSystem = system: {
       hostname,
       user ? defaultSystemArgs.user,
       initialPassword ? defaultSystemArgs.initialPassword,
       extraModules ? [],
     }: let
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        overlays = [inputs.nix-vscode-extensions.overlays.default];
-      };
+      pkgs = pkgsFor system;
     in
       nixpkgs.lib.nixosSystem {
         inherit system;
@@ -119,15 +133,12 @@
   in
     utils.lib.eachDefaultSystem (
       system: let
-        pkgs = import nixpkgs {inherit system;};
-        deploy = pkgs.callPackage ./packages/deploy/package.nix {
-          deploy-rs = inputs.deploy-rs.packages.${system}.default;
-        };
+        pkgs = pkgsFor system;
       in {
         formatter = pkgs.alejandra;
         packages = {
-          deploy-cli = deploy;
-          default = deploy;
+          inherit (pkgs) deploy-cli;
+          default = pkgs.deploy-cli;
           generate-services-table = pkgs.callPackage ./packages/generate-services-table/package.nix {
             inherit self;
           };
@@ -139,6 +150,8 @@
       }
     )
     // {
+      inherit overlays;
+
       nixosConfigurations = {
         yoga = mkSystem "x86_64-linux" {
           hostname = "yoga";
@@ -168,6 +181,14 @@
         };
       };
 
-      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+      checks =
+        builtins.mapAttrs (
+          system: deployLib:
+            deployLib.deployChecks self.deploy
+            // nixpkgs.lib.optionalAttrs (builtins.hasAttr system self.packages) {
+              inherit (self.packages.${system}) deploy-cli;
+            }
+        )
+        deploy-rs.lib;
     };
 }
