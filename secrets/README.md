@@ -14,17 +14,17 @@ This is my personal [agenix](https://github.com/ryantm/agenix/) configuration fo
 let
   sharedKey = ''
     ssh-ed25519 ... peucastro@agenix
-   '';
+  '';
 
-   recoveryKey = ''
+  recoveryKey = ''
     ssh-ed25519 ... peucastro@agenix-recovery
-   '';
+  '';
 
-   id_ed25519 = ''
+  id_ed25519 = ''
     ssh-ed25519 ... falecompedroac@gmail.com
-   '';
+  '';
 
-   trustedKeys = [sharedKey recoveryKey];
+  trustedKeys = [sharedKey recoveryKey];
 in {
   "id_ed25519.age".publicKeys = trustedKeys ++ [id_ed25519];
 }

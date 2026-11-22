@@ -15,6 +15,7 @@ My NixOS setup running on a couple of laptops and a home server. Everything is m
 
 ```sh
 ├── flake.nix       # Main flake configuration
+├── packages/       # Custom packages
 ├── hosts/          # Per-host configurations
 │   ├── ideapad/
 │   ├── khloe/
@@ -24,7 +25,8 @@ My NixOS setup running on a couple of laptops and a home server. Everything is m
 │   ├── core/       # NixOS modules
 │   └── home/       # Home Manager modules
 ├── profiles/       # Reusable system profiles
-└── secrets/        # Encrypted secrets management
+├── secrets/        # Encrypted secrets management
+└── shell.nix       # Development shell
 ```
 
 ## Installation
@@ -82,7 +84,6 @@ A headless server running various self-hosted services like Jellyfin for media s
 > This section is generated automatically from the Nix configuration using [this cursed Nix package](https://github.com/peucastro/nixos-config/blob/main/packages/generate-services-table/package.nix).
 
 ### Downloads
-
 |Icon|Name|Description|
 |---|---|---|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/deluge.svg' width=32 height=32>|Deluge|BitTorrent client with web UI|
@@ -91,7 +92,6 @@ A headless server running various self-hosted services like Jellyfin for media s
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/transmission.svg' width=32 height=32>|Transmission|Bittorrent client with web UI|
 
 ### Media
-
 |Icon|Name|Description|
 |---|---|---|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/calibre-web.svg' width=32 height=32>|Calibre-Web|Ebook library manager and reader|
@@ -101,7 +101,6 @@ A headless server running various self-hosted services like Jellyfin for media s
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/navidrome.svg' width=32 height=32>|Navidrome|Modern music server and streamer|
 
 ### Monitoring
-
 |Icon|Name|Description|
 |---|---|---|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/glances.svg' width=32 height=32>|Glances|System monitoring web UI|
@@ -111,13 +110,11 @@ A headless server running various self-hosted services like Jellyfin for media s
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/uptime-kuma.svg' width=32 height=32>|Uptime Kuma|Self-hosted monitoring service|
 
 ### Network
-
 |Icon|Name|Description|
 |---|---|---|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adguard-home.svg' width=32 height=32>|AdGuard Home|DNS server with ad/tracker blocking and web UI|
 
 ### Servarr
-
 |Icon|Name|Description|
 |---|---|---|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bazarr.svg' width=32 height=32>|Bazarr|Subtitle management for Radarr/Sonarr|
@@ -128,7 +125,6 @@ A headless server running various self-hosted services like Jellyfin for media s
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/sonarr.svg' width=32 height=32>|Sonarr|TV show collection manager for Usenet and BitTorrent|
 
 ### Utilities
-
 |Icon|Name|Description|
 |---|---|---|
 |<img src='https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/filebrowser.svg' width=32 height=32>|Filebrowser|Web file manager|

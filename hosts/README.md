@@ -1,37 +1,34 @@
 # Hosts
 
-This directory contains all host-specific configurations for my NixOS systems. Each host folder includes hardware, disk, state, and user environment configuration.
+This directory contains all host-specific configurations for my NixOS systems. Each host folder includes the hardware, disk, state, and user environment configuration that is specific to that machine.
 
-## Physical Machines
+## Machines
 
 | Host      | Platform | Hardware                 | Purpose                     | Status      |
 | --------- | -------- | ------------------------ | --------------------------- | ----------- |
-| `yoga`    | NixOS    | Lenovo Yoga Pro 7 14ASP9 | College, Work and Daily Use | ✅ Active   |
-| `kim`     | NixOS    | Generic Server           | Home server                 | ✅ Active   |
-| `khloe`   | NixOS    | Virtual Machine          | Deployment Testing          | ✅ Active   |
+| `kim`     | NixOS    | Intel N150 Mini PC       | Home server                 | ✅ Active   |
+| `khloe`   | NixOS    | VirtualBox VM            | NixOS change testing        | ✅ Active   |
+| `yoga`    | NixOS    | Lenovo Yoga Pro 7 14ASP9 | College, Work and Daily Use | ⚪ Not Used |
 | `ideapad` | NixOS    | Lenovo Ideapad 5 14ALC05 | College and Daily Use       | ⚪ Not Used |
+
+Every host is registered in the `hosts` attribute in `flake.nix`, which feeds `nixosConfigurations` and the deploy nodes.
 
 ## How to Add a New Host
 
-1. Create a new folder under `hosts/` named after your machine (e.g., `hosts/laptop`).
-2. Add the following files:
-
-- `hardware-configuration.nix`: Hardware scan from `nixos-generate-config --no-filesystems`.
-- `disk-configuration.nix`: Disk layout and mountpoints (using [`disko`](https://github.com/nix-community/disko)).
-- `state-configuration.nix`: System and home state version.
-- `home-configuration.nix`: Home Manager and user environment imports.
-- `default.nix`: Imports all configuration files and core modules.
+1. Create `hosts/<name>/` with at least `default.nix` and `hardware-configuration.nix`.
+2. Add the optional files you need:
+   - `disk-configuration.nix`: disko layout (bare metal).
+   - `state-configuration.nix`: system and home state versions.
+   - `home-configuration.nix`: Home Manager imports (desktop hosts).
+3. Import the matching profile from `profiles/` (`laptop.nix` or `server.nix`).
+4. Register the host in the `hosts` attribute in `flake.nix`.
 
 ## Usage
 
-To build or switch to a host configuration, use:
+To build or switch to a host configuration:
 
 ```sh
 nixos-rebuild switch --flake .#<hostname>
 ```
 
-or only for home-manager:
-
-```sh
-home-manager switch --flake .#<hostname>
-```
+Home Manager is embedded in the NixOS configuration (`useGlobalPkgs = true`), so there is no separate `home-manager switch` target.
