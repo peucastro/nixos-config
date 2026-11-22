@@ -18,7 +18,7 @@ jobs:
         uses: 0xc000022070/setup-alejandra@v4.0.0
 
       - name: Check formatting
-        run: alejandra --check **/*.nix
+        run: alejandra --check .
 
   check-lint:
     name: Nix Lint & Statix
@@ -32,11 +32,16 @@ jobs:
         with:
           token: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-      - name: Install Statix
-        run: nix profile add github:nerdypepper/statix
+      - name: Install Linters
+        run: |
+          nix profile add github:nerdypepper/statix
+          nix profile add nixpkgs#deadnix
 
       - name: Run Statix Lint
         run: statix check .
+
+      - name: Run Deadnix
+        run: deadnix --fail --exclude 'hosts/*/hardware-configuration.nix' .
 
       - name: Run Nixpkgs Lint
         run: nix run github:nix-community/nixpkgs-lint .

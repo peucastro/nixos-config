@@ -41,7 +41,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     services.restic.backups =
-      lib.mapAttrs (name: target: {
+      lib.mapAttrs (_name: target: {
         inherit (cfg) paths passwordFile;
         inherit (target) repository environmentFile;
 
