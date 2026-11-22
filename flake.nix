@@ -99,6 +99,7 @@
       };
       khloe = {
         system = "x86_64-linux";
+        extraModules = [];
       };
       kim = {
         system = "x86_64-linux";
@@ -177,7 +178,7 @@
           name: host:
             mkSystem host.system {
               hostname = name;
-              extraModules = host.extraModules or [];
+              inherit (host) extraModules;
             }
         )
         hosts;
