@@ -4,9 +4,8 @@ This directory contains reusable system profiles that encapsulate common configu
 
 ## Types
 
-- `laptop.nix` - Configuration for laptops with desktop environment, gaming support, power management, and NetworkManager.
-- `server.nix` - Configuration for headless servers with minimal packages, firewall, and server-specific modules.
-- `workstation.nix` - Configuration for desktop workstations with desktop environment, gaming support, and additional system tools.
+- `laptop.nix` - Configuration for laptops with desktop environment, gaming support, power management, NetworkManager, and laptop secrets.
+- `server.nix` - Configuration for headless servers with minimal packages, firewall, server-specific modules, and server secrets.
 
 ## Usage
 
