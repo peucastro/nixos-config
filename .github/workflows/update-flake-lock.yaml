@@ -33,8 +33,5 @@ jobs:
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
           pr-labels: dependencies
           pr-title: 'chore: update flake.lock'
-          commit-msg: |
-            chore: update flake.lock
-
-            Co-authored-by: Pedro Castro <106095810+peucastro@users.noreply.github.com>
+          commit-msg: 'chore: update flake.lock'
           branch: 'chore/update-flake-lock'
