@@ -73,8 +73,6 @@
     utils,
     disko,
     agenix,
-    home-manager,
-    nvf,
     deploy-rs,
     ...
   } @ inputs: let
@@ -90,8 +88,30 @@
       initialPassword = "nixos";
     };
 
+    hosts = {
+      yoga = {
+        system = "x86_64-linux";
+        extraModules = [disko.nixosModules.disko];
+      };
+      ideapad = {
+        system = "x86_64-linux";
+        extraModules = [disko.nixosModules.disko];
+      };
+      khloe = {
+        system = "x86_64-linux";
+      };
+      kim = {
+        system = "x86_64-linux";
+        extraModules = [disko.nixosModules.disko];
+        deploy = {
+          hostname = "192.168.1.100";
+          sshUser = "homeserver";
+        };
+      };
+    };
+
     overlays = {
-      default = final: prev: {
+      default = _final: prev: {
         deploy-cli = prev.callPackage ./packages/deploy/package.nix {
           deploy-rs = inputs.deploy-rs.packages.${prev.stdenv.hostPlatform.system}.default;
         };
@@ -119,7 +139,7 @@
       nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit self inputs user initialPassword;
+          inherit inputs user initialPassword;
           inherit (inputs) agenix secrets;
           host = hostname;
         };
@@ -152,34 +172,27 @@
     // {
       inherit overlays;
 
-      nixosConfigurations = {
-        yoga = mkSystem "x86_64-linux" {
-          hostname = "yoga";
-          extraModules = [disko.nixosModules.disko];
-        };
-        ideapad = mkSystem "x86_64-linux" {
-          hostname = "ideapad";
-          extraModules = [disko.nixosModules.disko];
-        };
-        khloe = mkSystem "x86_64-linux" {
-          hostname = "khloe";
-        };
-        kim = mkSystem "x86_64-linux" {
-          hostname = "kim";
-          extraModules = [disko.nixosModules.disko];
-        };
-      };
+      nixosConfigurations =
+        builtins.mapAttrs (
+          name: host:
+            mkSystem host.system {
+              hostname = name;
+              extraModules = host.extraModules or [];
+            }
+        )
+        hosts;
 
-      deploy.nodes.kim = {
-        hostname = "192.168.1.100";
-        sshUser = "homeserver";
-        remoteBuild = false;
+      deploy.nodes = builtins.mapAttrs (
+        name: host: {
+          inherit (host.deploy) hostname sshUser;
+          remoteBuild = false;
 
-        profiles.system = {
-          user = "root";
-          path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.kim;
-        };
-      };
+          profiles.system = {
+            user = "root";
+            path = deploy-rs.lib.${host.system}.activate.nixos self.nixosConfigurations.${name};
+          };
+        }
+      ) (nixpkgs.lib.filterAttrs (_: host: host ? deploy) hosts);
 
       checks =
         builtins.mapAttrs (
