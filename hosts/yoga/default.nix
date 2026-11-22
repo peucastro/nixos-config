@@ -4,7 +4,6 @@
     ./disk-configuration.nix
     ./state-configuration.nix
     ./home-configuration.nix
-    ../../secrets
     ../../profiles/laptop.nix
   ];
 

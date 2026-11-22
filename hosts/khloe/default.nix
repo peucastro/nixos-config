@@ -1,7 +1,7 @@
 {config, ...}: {
   imports = [
     ./hardware-configuration.nix
-    ../../secrets
+    ./state-configuration.nix
     ../../profiles/server.nix
     ../../modules/core/services/homeserver
   ];
@@ -10,7 +10,6 @@
   users.users.homeserver.extraGroups = ["vboxsf"];
 
   networking = {
-    hostName = "khloe";
     interfaces.enp0s3.ipv4.addresses = [
       {
         address = "192.168.1.100";
@@ -18,7 +17,6 @@
       }
     ];
   };
-  system.stateVersion = "25.11";
 
   homeserver = {
     timeZone = "Europe/Lisbon";
